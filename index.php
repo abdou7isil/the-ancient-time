@@ -39,7 +39,8 @@ Create an account</a>
     <div class="header">
 
       <h1 align="right">  The Ancient Time </h1>
-      <p  align="center" class="style2"> the greatest war and treasure hunt </p>
+      <p  align="center" class="style2">only the strongest will survive</P><br>
+      <p   align="center" > the greatest war and treasure hunt </p>
     </div>
     <div class="pattern"><span></span></div>
   </div>
