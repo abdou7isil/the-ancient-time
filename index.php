@@ -34,7 +34,11 @@ Create an account</a>
 </div>
    <div class="gfx"></div>
   <div class="top">
-    <div class="navigation"> <a href="#" id="selected">home</a> <a href="#">forum</a> <a href="#">property</a> <a href="#">player</a> <a href="#">history</a> </div>
+    <div class="navigation">
+      <a href="#" id="selected">home</a>
+      <a href="#">forum</a> <a href="#">property</a>
+      <a href="#">player</a>
+       <a href="history.php">history</a> </div>
     <div class="pattern"><span></span></div>
     <div class="header">
 
