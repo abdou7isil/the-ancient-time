@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 20 jan. 2020 à 18:29
+-- Généré le :  lun. 20 jan. 2020 à 19:59
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -357,11 +357,15 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   `ID_Liste` int(4) NOT NULL,
   `ID_Guild` int(3) NOT NULL,
   `ID_Class` int(11) NOT NULL,
+  `MainG` int(11) NOT NULL,
+  `MainD` int(11) NOT NULL,
   PRIMARY KEY (`ID_J`),
   KEY `ID_Ad` (`ID_Ad`),
   KEY `ID_Liste` (`ID_Liste`),
   KEY `ID_Guild` (`ID_Guild`),
-  KEY `ID_Class` (`ID_Class`)
+  KEY `ID_Class` (`ID_Class`),
+  KEY `MainG` (`MainG`),
+  KEY `MainD` (`MainD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -443,6 +447,10 @@ CREATE TABLE IF NOT EXISTS `objet` (
   `Etat_Obj` varchar(7) NOT NULL,
   `for_ce` int(11) NOT NULL,
   `ID_Sad` varchar(15) NOT NULL,
+  `objetPa` int(11) DEFAULT NULL,
+  `objetPm` int(11) DEFAULT NULL,
+  `objetPv` int(11) DEFAULT NULL,
+  `objetResistance` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_Obj`),
   KEY `ID_Sad` (`ID_Sad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -719,7 +727,9 @@ ALTER TABLE `joueur`
   ADD CONSTRAINT `joueur_ibfk_1` FOREIGN KEY (`ID_Ad`) REFERENCES `admin` (`ID_Ad`),
   ADD CONSTRAINT `joueur_ibfk_2` FOREIGN KEY (`ID_Guild`) REFERENCES `guild` (`ID_Guild`),
   ADD CONSTRAINT `joueur_ibfk_3` FOREIGN KEY (`ID_Liste`) REFERENCES `liste_amis` (`ID_Liste`),
-  ADD CONSTRAINT `joueur_ibfk_4` FOREIGN KEY (`ID_Class`) REFERENCES `classe` (`ID_Class`);
+  ADD CONSTRAINT `joueur_ibfk_4` FOREIGN KEY (`ID_Class`) REFERENCES `classe` (`ID_Class`),
+  ADD CONSTRAINT `joueur_ibfk_5` FOREIGN KEY (`MainG`) REFERENCES `objet` (`ID_Obj`),
+  ADD CONSTRAINT `joueur_ibfk_6` FOREIGN KEY (`MainD`) REFERENCES `objet` (`ID_Obj`);
 
 --
 -- Contraintes pour la table `message`
