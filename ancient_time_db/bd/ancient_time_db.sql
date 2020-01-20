@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 20 jan. 2020 à 17:19
+-- Généré le :  lun. 20 jan. 2020 à 18:29
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -356,10 +356,12 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   `ID_Ad` int(3) NOT NULL,
   `ID_Liste` int(4) NOT NULL,
   `ID_Guild` int(3) NOT NULL,
+  `ID_Class` int(11) NOT NULL,
   PRIMARY KEY (`ID_J`),
   KEY `ID_Ad` (`ID_Ad`),
   KEY `ID_Liste` (`ID_Liste`),
-  KEY `ID_Guild` (`ID_Guild`)
+  KEY `ID_Guild` (`ID_Guild`),
+  KEY `ID_Class` (`ID_Class`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -716,7 +718,8 @@ ALTER TABLE `invitation`
 ALTER TABLE `joueur`
   ADD CONSTRAINT `joueur_ibfk_1` FOREIGN KEY (`ID_Ad`) REFERENCES `admin` (`ID_Ad`),
   ADD CONSTRAINT `joueur_ibfk_2` FOREIGN KEY (`ID_Guild`) REFERENCES `guild` (`ID_Guild`),
-  ADD CONSTRAINT `joueur_ibfk_3` FOREIGN KEY (`ID_Liste`) REFERENCES `liste_amis` (`ID_Liste`);
+  ADD CONSTRAINT `joueur_ibfk_3` FOREIGN KEY (`ID_Liste`) REFERENCES `liste_amis` (`ID_Liste`),
+  ADD CONSTRAINT `joueur_ibfk_4` FOREIGN KEY (`ID_Class`) REFERENCES `classe` (`ID_Class`);
 
 --
 -- Contraintes pour la table `message`
