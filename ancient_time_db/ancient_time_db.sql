@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 17 jan. 2020 à 21:07
--- Version du serveur :  5.7.19
--- Version de PHP :  5.6.31
+-- Généré le :  lun. 20 jan. 2020 à 17:19
+-- Version du serveur :  5.7.23
+-- Version de PHP :  7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -140,10 +140,26 @@ CREATE TABLE IF NOT EXISTS `bug` (
 DROP TABLE IF EXISTS `classe`;
 CREATE TABLE IF NOT EXISTS `classe` (
   `ID_Class` int(11) NOT NULL AUTO_INCREMENT,
-  `Race` varchar(10) NOT NULL,
-  `Sexe` varchar(5) NOT NULL,
-  PRIMARY KEY (`ID_Class`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nomClasse` char(10) NOT NULL,
+  `PV` int(11) NOT NULL,
+  `laForce` int(11) NOT NULL,
+  `resistance` int(11) NOT NULL,
+  `PA` int(11) NOT NULL,
+  `PM` int(11) NOT NULL,
+  PRIMARY KEY (`ID_Class`),
+  UNIQUE KEY `nomClasse` (`nomClasse`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `classe`
+--
+
+INSERT INTO `classe` (`ID_Class`, `nomClasse`, `PV`, `laForce`, `resistance`, `PA`, `PM`) VALUES
+(1, 'Giants', 600, 40, 60, 5, 4),
+(2, 'Humains', 400, 100, 40, 8, 5),
+(3, 'Angels', 400, 110, 35, 9, 4),
+(4, 'Devils', 350, 120, 50, 8, 4),
+(5, 'Fairies', 300, 120, 30, 10, 6);
 
 -- --------------------------------------------------------
 
