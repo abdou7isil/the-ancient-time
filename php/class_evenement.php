@@ -61,7 +61,7 @@ class Evenement extends DatabaseObject {
       $this->errors[] = "Le Nom de l'évenement ne peut pas etre vide.";
     }
 
-    if(is_blank($this->Date_Debut_Event>)) {
+    if(is_blank($this->Date_Debut_Event)) {
       $this->errors[] = "La date de debut ne peut pas etre vide.";
     }
 
