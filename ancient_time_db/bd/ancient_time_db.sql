@@ -221,25 +221,6 @@ CREATE TABLE IF NOT EXISTS `disscussion` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `dungion`
---
-
-DROP TABLE IF EXISTS `dungion`;
-CREATE TABLE IF NOT EXISTS `dungion` (
-  `ID_Dun` int(3) NOT NULL AUTO_INCREMENT,
-  `Nom_Dun` varchar(15) NOT NULL,
-  `Width_Dun` float NOT NULL,
-  `Height_Dun` float NOT NULL,
-  `difficult_Dun` int(2) NOT NULL,
-  `Duree` time NOT NULL,
-  `ID_Mond` int(2) NOT NULL,
-  PRIMARY KEY (`ID_Dun`),
-  KEY `ID_Mond` (`ID_Mond`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `entamer`
 --
 
@@ -254,37 +235,6 @@ CREATE TABLE IF NOT EXISTS `entamer` (
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `etage`
---
-
-DROP TABLE IF EXISTS `etage`;
-CREATE TABLE IF NOT EXISTS `etage` (
-  `ID_Etag` int(4) NOT NULL AUTO_INCREMENT,
-  `Num_Etag` int(2) NOT NULL,
-  `Difficult` int(2) NOT NULL,
-  `ID_Dun` int(3) NOT NULL,
-  PRIMARY KEY (`ID_Etag`),
-  KEY `ID_Dun` (`ID_Dun`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `evenement`
---
-
-DROP TABLE IF EXISTS `evenement`;
-CREATE TABLE IF NOT EXISTS `evenement` (
-  `ID_Event` int(4) NOT NULL AUTO_INCREMENT,
-  `Nom_Event` varchar(15) NOT NULL,
-  `Date_Debut_Event` date NOT NULL,
-  `Date_Fin_Event` date NOT NULL,
-  `Min_Level` int(3) NOT NULL,
-  `ID_Mond` int(2) NOT NULL,
-  PRIMARY KEY (`ID_Event`),
-  KEY `ID_Mond` (`ID_Mond`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -368,6 +318,18 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   KEY `MainD` (`MainD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `npc` (
+  `id_npc` mediumint(10) NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL default '',
+  `image` varchar(30) NOT NULL default '',
+  `sector_id` mediumint(10) NOT NULL default '0',
+  `x` varchar(15) NOT NULL default '',
+  `y` varchar(15) NOT NULL default '',
+  `services` varchar(255) NOT NULL default '',
+  `weapons` text NOT NULL,
+  `items` varchar(255) NOT NULL default '',
+  KEY `id_npc` (`id_npc`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- --------------------------------------------------------
 
 --
@@ -380,7 +342,6 @@ CREATE TABLE IF NOT EXISTS `liste_amis` (
   `Nbr_Amis` int(4) NOT NULL,
   PRIMARY KEY (`ID_Liste`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
@@ -396,6 +357,57 @@ CREATE TABLE IF NOT EXISTS `message` (
   `ID_J` int(4) NOT NULL,
   PRIMARY KEY (`ID_msg`),
   KEY `ID_J` (`ID_J`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+--
+-- Structure de la table `dungion`
+--
+
+DROP TABLE IF EXISTS `dungion`;
+CREATE TABLE IF NOT EXISTS `dungion` (
+  `ID_Dun` int(3) NOT NULL AUTO_INCREMENT,
+  `Nom_Dun` varchar(15) NOT NULL,
+  `Width_Dun` float NOT NULL,
+  `Height_Dun` float NOT NULL,
+  `difficult_Dun` int(2) NOT NULL,
+  `Duree` time NOT NULL,
+  `ID_Mond` int(2) NOT NULL,
+  PRIMARY KEY (`ID_Dun`),
+  KEY `ID_Mond` (`ID_Mond`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+--
+-- Structure de la table `etage`
+--
+
+DROP TABLE IF EXISTS `etage`;
+CREATE TABLE IF NOT EXISTS `etage` (
+  `ID_Etag` int(4) NOT NULL AUTO_INCREMENT,
+  `Num_Etag` int(2) NOT NULL,
+  `Difficult` int(2) NOT NULL,
+  `ID_Dun` int(3) NOT NULL,
+  PRIMARY KEY (`ID_Etag`),
+  KEY `ID_Dun` (`ID_Dun`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+DROP TABLE IF EXISTS `evenement`;
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `ID_Event` int(4) NOT NULL AUTO_INCREMENT,
+  `Nom_Event` varchar(15) NOT NULL,
+  `Date_Debut_Event` date NOT NULL,
+  `Date_Fin_Event` date NOT NULL,
+  `Min_Level` int(3) NOT NULL,
+  `ID_Mond` int(2) NOT NULL,
+  PRIMARY KEY (`ID_Event`),
+  KEY `ID_Mond` (`ID_Mond`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

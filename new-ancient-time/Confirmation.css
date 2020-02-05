@@ -1,0 +1,38 @@
+
+#DemonZone {
+	position:absolute;
+	left:944px;
+	top:310px;
+	width:289px;
+	height:295px;
+	z-index:5;
+}
+#DemonZone1 {
+	position:absolute;
+	left:944px;
+	top:310px;
+	width:289px;
+	height:295px;
+	z-index:5;
+}
+.msgConfirm {
+	font-size: medium;
+	font-family: "Courier New", Courier, monospace;
+}
+.msgValid{
+	font-size: medium;
+	font-family: "Courier New", Courier, monospace;
+	color:#00F;
+	
+}
+#forgPass{
+	font-family:"Times New Roman", Times, serif;
+	font-size:28px;
+	font-weight:bold;
+	color:#333;}
+.style2 {font-size: 9}
+#indication{
+	font-family: "Courier New", Courier, monospace;
+	font-size:medium;
+		color:#333;
+}

@@ -1,7 +1,5 @@
 <?php
 
-
-
 function u($string="") {
   return urlencode($string);
 }

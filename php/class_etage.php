@@ -1,7 +1,7 @@
 <?php include "databaseobject.class.php" ?>
 <?php
 
-class Monstre extends DatabaseObject {
+class Etage extends DatabaseObject {
 
     static public $table_name='etage';
     static public $db_columns= ['ID_Etag' , 'Num_Etag' , 'Difficult' , 'ID_Dun'];
