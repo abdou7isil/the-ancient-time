@@ -98,28 +98,7 @@
   // * For new records, provide only the username.
   // * For existing records, provide current ID as second argument
   //   has_unique_username('johnqpublic', 4)
-  function has_unique_username($username, $current_id="0") {
-    // Need to re-write for OOP
-    $secretaire = Secretaire::find_by_username($username);
-    if($secretaire === false || $secretaire->id_secretaire == $current_id) {
-      // is unique
-      return true;
-    } else {
-      // not unique
-      return false;
-    }
-  }
-  function has_unique_email_medecin($email, $current_id="0") {
-    // Need to re-write for OOP
-    $medecin = Medecin::find_by_email($email);
-    if($medecin === false || $medecin->id_medecin == $current_id) {
-      // is unique
-      return true;
-    } else {
-      // not unique
-      return false;
-    }
-  }
+
   function has_unique_email_patient($email, $current_id="0") {
     // Need to re-write for OOP
     $patient = Patient::find_by_email($email);

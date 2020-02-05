@@ -35,6 +35,16 @@
         return $result;
       }
 
+    static  public function count_all_mondes(){
+        $sql = "SELECT COUNT(*) as total FROM monde " ;
+        $result = self::$database->query($sql);
+        if(!$result) {
+          exit("Database query failed.");
+        }
+        $row = $result->fetch_array();
+        return array_shift($row);
+      }
+
     public $ID_Mond;
     public $Nom_Mond;
     public $Width;

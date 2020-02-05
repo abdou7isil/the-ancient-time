@@ -22,8 +22,7 @@ Create an account</a>
   </form>
 
   <pre><a href="#" class="style8 style12">Forgot your password ?</a>
-
-</pre>
+  </pre>
 </div>
 
 <div id="Layer7"><img src="img/45545444.png" alt="" width="132" height="89" /></div>

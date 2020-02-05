@@ -8,12 +8,12 @@
 <style type="text/css">
 .error {	width: 90%;
 	margin-bottom:15px;
- 	 
-	padding: 10px; 
-	border: 1px solid #a94442; 
-	color: #a94442; 
-	background: #f2dede; 
-	border-radius: 5px; 
+
+	padding: 10px;
+	border: 1px solid #a94442;
+	color: #a94442;
+	background: #f2dede;
+	border-radius: 5px;
 	text-align: left;
 	margin-left:20px;
 }
@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="LogoZone">
-  <img src="img/logo.png" alt="" width="308" height="520" id="logo" />    
+  <img src="img/logo.png" alt="" width="308" height="520" id="logo" />
 </div>
 
 <div id="BoxZone">
@@ -37,12 +37,12 @@
   <form id="formLog" method="post" action="">
     <p>
     <label><span id="user">User </span></label>
-    
+
     <input name="userInpt" type="text" placeholder="Your user name" />
     </p>
     <p>
     <label><span id="pass">Password </span></label>
-    
+
     <input name="passInpt" type="password" placeholder="********" />
     </p>
     <p align="center">
@@ -56,13 +56,13 @@
 </div>
 
 <div class="container">
- 
+
   <div class="gfx"></div>
 <div class="top">
     <div class="navigation"> <a href="#" id="selected">home</a> <a href="#">forum</a> <a href="#">property</a> <a href="#">player</a> <a href="#">history</a> </div>
     <div class="pattern"><span></span></div>
     <div class="header">
-	
+
       <h1 align="right">  The Ancient Time </h1>
       <p  align="center" class="style2"> the greatest war and treasure hunt </p>
     </div>

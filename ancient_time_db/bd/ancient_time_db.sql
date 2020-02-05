@@ -422,8 +422,9 @@ CREATE TABLE IF NOT EXISTS `monde` (
   `Nom_Mond` varchar(20) NOT NULL,
   `Width` float NOT NULL,
   `Height` float NOT NULL,
+  `date_de_creation` date,
   `Roi_Mond` varchar(15) NOT NULL,
-  `ID_Dev` int(2) NOT NULL,
+  `ID_Dev` int(2),
   PRIMARY KEY (`ID_Mond`),
   KEY `ID_Dev` (`ID_Dev`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
