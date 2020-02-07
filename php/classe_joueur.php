@@ -41,7 +41,7 @@ class joueur
 
   $query="select (pa)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));");
   $classe_Pa=  DatabaseObject::query($query);
-    $classe_Pa+=$classe_Pa*getLevel();
+  //  $classe_Pa+=$classe_Pa*getLevel();
   $query="select (objetpa)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));");
   $MainG_Pa=  DatabaseObject::query($query);
   $query="select (objetpa)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));");
@@ -55,7 +55,7 @@ class joueur
     {
       $query="select (pm)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));");
       $classe_Pm=  DatabaseObject::query($query);
-        $classe_Pm+=$classe_Pm*getLevel();
+    //  $classe_Pm+=$classe_Pm*getLevel();
       $query="select (objetpm)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));");
       $MainG_Pm=  DatabaseObject::query($query);
       $query="select (objetpm)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));");
