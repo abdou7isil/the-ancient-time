@@ -248,6 +248,8 @@ CREATE TABLE IF NOT EXISTS `guild` (
   `Nom_Guild` varchar(15) NOT NULL,
   `For_ce_Guild` int(2) NOT NULL,
   `ID_Mond` int(2) NOT NULL,
+  `Members` text NOT NULL,
+  `Admin` varchar(15) NOT NULL,
   PRIMARY KEY (`ID_Guild`),
   KEY `ID_Mond` (`ID_Mond`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -268,18 +270,22 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `invitation`
+-- Structure de la table `friend_requests`
 --
 
 DROP TABLE IF EXISTS `invitation`;
-CREATE TABLE IF NOT EXISTS `invitation` (
-  `ID_J1` int(4) NOT NULL,
-  `ID_J2` int(4) NOT NULL,
-  `Reponse` varchar(10) NOT NULL,
-  `Date_Inv` date NOT NULL,
-  KEY `ID_J1` (`ID_J1`,`ID_J2`),
-  KEY `ID_J2` (`ID_J2`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `friend_requests`;
+CREATE TABLE IF NOT EXISTS friend_requests (
+
+id int(11) NOT NULL auto_increment,
+
+sender int(11) NOT NULL,
+
+recipient int(11) NOT NULL,
+
+PRIMARY KEY  (id)
+
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -333,15 +339,21 @@ CREATE TABLE `npc` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `liste_amis`
+-- Structure de la table `members`
 --
-
 DROP TABLE IF EXISTS `liste_amis`;
-CREATE TABLE IF NOT EXISTS `liste_amis` (
-  `ID_Liste` int(4) NOT NULL AUTO_INCREMENT,
-  `Nbr_Amis` int(4) NOT NULL,
-  PRIMARY KEY (`ID_Liste`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `members`;
+CREATE TABLE IF NOT EXISTS members (
+
+id int(11) NOT NULL auto_increment,
+
+username varchar(255) NOT NULL,
+
+friends text NOT NULL,
+
+PRIMARY KEY  (id)
+
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 -- --------------------------------------------------------
 
 --
