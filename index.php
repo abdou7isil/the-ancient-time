@@ -10,7 +10,7 @@
 
 <div id="Layer1" ><img src="img/logo.png" alt="" width="232" height="411" /></div>
 <div class="header" id="Layer3">
-  <pre><a href="#" class="style8 style12">
+  <pre><a href="register.php" class="style8 style12">
 
 Create an account</a>
 
