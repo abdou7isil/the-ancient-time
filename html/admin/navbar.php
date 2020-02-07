@@ -28,9 +28,9 @@
 
               <div class="collapse" id="collapseExample">
                 <div class="">
-                  <a href="signal.php" class="nav-link text-white p-3 mb-2 ml-3 sidebar-link">
+                  <a href="signal.php" class="nav-link text-white p-2 mb-2 ml-3 sidebar-link">
                     <i class="far fa-flag text-light fa-lg mr-3"></i>Signal</a>
-                    <a href="bug.php" class="nav-link text-white p-3 mb-2 ml-3 sidebar-link">
+                    <a href="bug.php" class="nav-link text-white p-2 mb-2 ml-3 sidebar-link">
                       <i class="fas fa-bug text-light fa-lg mr-3"></i>Bug</a>
                 </div>
               </div>
