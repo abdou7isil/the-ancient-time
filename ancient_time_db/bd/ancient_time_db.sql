@@ -336,6 +336,7 @@ CREATE TABLE `npc` (
   `items` varchar(255) NOT NULL default '',
   KEY `id_npc` (`id_npc`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -471,13 +472,11 @@ CREATE TABLE IF NOT EXISTS `objet` (
   `Nom_Obj` varchar(15) NOT NULL,
   `Etat_Obj` varchar(7) NOT NULL,
   `for_ce` int(11) NOT NULL,
-  `ID_Sad` varchar(15) NOT NULL,
   `objetPa` int(11) DEFAULT NULL,
   `objetPm` int(11) DEFAULT NULL,
   `objetPv` int(11) DEFAULT NULL,
   `objetResistance` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID_Obj`),
-  KEY `ID_Sad` (`ID_Sad`)
+  PRIMARY KEY (`ID_Obj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -777,8 +776,8 @@ ALTER TABLE `monstre`
 --
 -- Contraintes pour la table `objet`
 --
-ALTER TABLE `objet`
-  ADD CONSTRAINT `objet_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
+-- ALTER TABLE `objet`
+--  ADD CONSTRAINT `objet_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
 
 --
 -- Contraintes pour la table `objet_inventair`
@@ -835,6 +834,14 @@ ALTER TABLE `sig_nal`
   ADD CONSTRAINT `sig_nal_ibfk_1` FOREIGN KEY (`ID_J`) REFERENCES `joueur` (`ID_J`),
   ADD CONSTRAINT `sig_nal_ibfk_2` FOREIGN KEY (`ID_Rapp`) REFERENCES `rapport` (`ID_Rapp`);
 COMMIT;
+
+-- modification table objet
+
+ALTER TABLE `objet` ADD `prix_objet` DOUBLE NOT NULL DEFAULT '0' AFTER `Nom_Obj`;
+
+-- insertion des valeurs
+
+INSERT INTO `objet` (`ID_Obj`, `Nom_Obj`, `prix_objet`, `Etat_Obj`, `for_ce`, `objetPa`, `objetPm`, `objetPv`, `objetResistance`) VALUES ('1', 'épée', '10', 'neuf', '70', '0', '0', '80', '15'), ('2', 'arc', '8', 'neuf', '18', '2', '2', '20', '3'), ('4', 'baton', '7', 'neuf', '40', '1', '0', '60', '7'), ('5', 'massue', '9', 'neuf', '80', '1', '1', '30', '5'), ('3', 'dague', '6', 'neuf', '20', '1', '2', '40', '5'), ('6', 'bouclier_acier', '6', 'neuf', '5', '0', '0', '80', '15'), ('7', 'bouclier_argenté', '8', 'neuf', '10', '0', '0', '100', '30'), ('8', 'bouclier_diamand', '10', 'neuf', '20', '0', '0', '120', '30')
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
