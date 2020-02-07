@@ -742,8 +742,8 @@ ALTER TABLE `guild`
 -- Contraintes pour la table `invitation`
 --
 ALTER TABLE `invitation`
-  ADD CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`ID_J1`) REFERENCES `joueur` (`ID_J`),
-  ADD CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`ID_J2`) REFERENCES `joueur` (`ID_J`);
+  ADD CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `joueur` (`ID_J`),
+  ADD CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `joueur` (`ID_J`);
 
 --
 -- Contraintes pour la table `joueur`
