@@ -739,11 +739,11 @@ ALTER TABLE `guild`
   ADD CONSTRAINT `guild_ibfk_1` FOREIGN KEY (`ID_Mond`) REFERENCES `monde` (`ID_Mond`);
 
 --
--- Contraintes pour la table `invitation`
+-- Contraintes pour la table `friend_requests`
 --
-ALTER TABLE `invitation`
-  ADD CONSTRAINT `invitation_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `joueur` (`ID_J`),
-  ADD CONSTRAINT `invitation_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `joueur` (`ID_J`);
+ALTER TABLE `friend_requests`
+  ADD CONSTRAINT `friend_requests_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `joueur` (`ID_J`),
+  ADD CONSTRAINT `friend_requests_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `joueur` (`ID_J`);
 
 --
 -- Contraintes pour la table `joueur`
