@@ -751,7 +751,7 @@ ALTER TABLE `invitation`
 ALTER TABLE `joueur`
   ADD CONSTRAINT `joueur_ibfk_1` FOREIGN KEY (`ID_Ad`) REFERENCES `admin` (`ID_Ad`),
   ADD CONSTRAINT `joueur_ibfk_2` FOREIGN KEY (`ID_Guild`) REFERENCES `guild` (`ID_Guild`),
-  ADD CONSTRAINT `joueur_ibfk_3` FOREIGN KEY (`ID_Liste`) REFERENCES `liste_amis` (`ID_Liste`),
+  ADD CONSTRAINT `joueur_ibfk_3` FOREIGN KEY (`ID_Liste`) REFERENCES `members` (`id`),
   ADD CONSTRAINT `joueur_ibfk_4` FOREIGN KEY (`ID_Class`) REFERENCES `classe` (`ID_Class`),
   ADD CONSTRAINT `joueur_ibfk_5` FOREIGN KEY (`MainG`) REFERENCES `objet` (`ID_Obj`),
   ADD CONSTRAINT `joueur_ibfk_6` FOREIGN KEY (`MainD`) REFERENCES `objet` (`ID_Obj`);
