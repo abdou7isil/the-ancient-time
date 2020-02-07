@@ -65,6 +65,17 @@ boder-radius: 5px;
 	width:100%;
  margin-bottom:10px;
 }
+.inputbug{
+padding: 8px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+padding-left:5px;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:100%;
+ margin-bottom:10px;
+}
 #BarLog label span{
 	font-size:14px;
 	color:#FFF;
@@ -138,7 +149,7 @@ boder-radius: 10px;
 border:1px solid #FF0000;
 color:#000;
 }
-.style2 {font-size: 9}
+.style2 {font-size: 9px}
 
 
 

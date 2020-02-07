@@ -9,7 +9,8 @@
 
   // Create connection
   function connectDB()
-  { $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS,DB_NAME);
+  {
+    $conn = new mysqli(DB_SERVER, DB_USER, DB_PASS,DB_NAME);
 
   // Check connection
   if ($conn->connect_error) {
@@ -31,12 +32,17 @@
   }
 
   function selectQuery($sql)
-  {$conn=connectDB();
+  { try {
+    $conn=connectDB();
     $result = $conn->query($sql);
-    return $result;
-  }
 
-  function selectFirstQuery($sql)
+    return $result->fetch_assoc();
+}catch(Excepetion $e)
+  {
+  }
+}
+
+/*  function selectFirstQuery($sql)
   {
     $conn=connectDB();
     $result = mysqli_query($conn, $sql);
@@ -45,7 +51,7 @@
    $row = mysqli_fetch_assoc($result);
 
     return $row;
-  }
+  }*/
 
 
 
@@ -74,95 +80,125 @@ class joueur
 
   public  function getClass() // retourne la classe de ce joueur , ou besoin de cette fonction dans le calule pa/pm/pv/résistance
      {
-
-
-       $sql="select (nomClasse)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".self::getID_J()."))) LIMIT 1;";
-       $classe=selectFirstQuery($sql);
-
-
-         return $classe['nomClasse'];
-
-
-
-
-     }
-  public static   function getLevel() // retourne le niveau de ce joueur   ==> 250 points = +1 level
+      $id=$this->getID_J();
+      $sql="select (nomClasse)from classe where (ID_class = (select(ID_class) from joueur where (ID_class = ".$id."))) LIMIT 1;";
+      $classe=selectQuery($sql);
+      return $classe["nomClasse"];
+    }
+  public    function getLevel() // retourne le niveau de ce joueur   ==> 250 points = +1 level
 
        {
+         $id=$this->getID_J();
+         $sql="select (Point)from joueur where (ID_class = ".$id.");";
 
-         $sql="select (Point)from joueur where (ID_classe = ".getID_J()."));";
-         $result=selectQuery($sql);
-         $lvl=intval($result/250);
-          $classe=selectQuery($result);
+        $result=selectQuery($sql);
+
+         $lvl=intval($result["Point"]/250);
+
+
 
          return $lvl;
+
          // et chaque niveau vas améloirer les caractéristiques de ce joueur ( caractéristique= caractéristique+ 0.01*caractéristique)
          // les caractéristiques sont (Point de vie (pv) , pa, pm,résistance)
        }
-  public static function initPa() // pa de joueur (pa de la classe + les objets équipés)
+  public  function initPa() // pa de joueur (pa de la classe + les objets équipés)
     {
 
-  $query="select (pa)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=". $GLOBALS['ID'].")));";
-  $classe_Pa=  DatabaseObject::query($query);
+  $id=$this->getID_J();
+  $query="select (pa)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=". $id.")));";
+  $classe_Pa=  selectQuery($query);
+  $classe_Pa=$classe_Pa["pa"];
 
-//  $query="select (objetpa)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$this->getID_J()")));";
-//  $MainG_Pa=  DatabaseObject::query($query);
-$MainG_Pa=1;
-$MainD_Pa= 2;
-/*  $query="select (objetpa)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$this->getID_J().")));";
-  $MainD_Pa=  DatabaseObject::query($query);*/
+  $query="select (objetpa)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
+  $MainG_Pa= selectQuery($query);
+  $MainG_Pa= $MainG_Pa["objetpa"];
+  $query="select (objetpa)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
+  $MainD_Pa= selectQuery($query);
+  $MainD_Pa= $MainD_Pa["objetpa"];
+
+
   return $classe_Pa+$MainD_Pa+$MainG_Pa;
 
 
     }
 
-  public static function initPm()//// pm de joueur (pm de la classe + les objets équipés)
+  public function initPm()//// pm de joueur (pm de la classe + les objets équipés)
     {
-      $query="select (pm)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));";
-      $classe_Pm=  DatabaseObject::query($query);
-    //  $classe_Pm+=$classe_Pm*getLevel();
-      $query="select (objetpm)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));";
-      $MainG_Pm=  DatabaseObject::query($query);
-      $query="select (objetpm)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));";
-      $MainD_Pm=  DatabaseObject::query($query);
+      $id=$this->getID_J();
+      $query="select (pm)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=". $id.")));";
+      $classe_Pm=  selectQuery($query);
+      $classe_Pm=$classe_Pm["pm"];
+
+      $query="select (objetpa)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
+      $MainG_Pm= selectQuery($query);
+      $MainG_Pm= $MainG_Pm["objetpm"];
+      $query="select (objetpm)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
+      $MainD_Pa= selectQuery($query);
+      $MainD_Pa= $MainD_Pa["objetpm"];
+
+
       return $classe_Pm+$MainD_Pm+$MainG_Pm;
+
     }
 
-  public static function initPv() // pv de joueur (pv de la classe + les objets équipés)
+  public  function initPv() // pv de joueur (pv de la classe + les objets équipés)
     {
-      $query="select (pv)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));";
-      $classe_Pv=  DatabaseObject::query($query);
+      $id=$this->getID_J();
+      $query="select (pv)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=". $id.")));";
+      $classe_Pv=  selectQuery($query);
+
+
+      $query="select (objetpv)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
+      $MainG_Pv= selectQuery($query);
+
+      $query="select (objetpv)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
+      $MainD_Pv= selectQuery($query);
+
+
+
+
+
       $classe_Pv+=$classe_Pv*getLevel();
-      $query="select (objetpv)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));";
-      $MainG_Pm=  DatabaseObject::query($query);
-      $query="select (objetpv)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));";
-      $MainD_Pm=  DatabaseObject::query($query);
+        $classe_Pv=$classe_Pa["pv"];
+        $MainD_Pv= $MainD_Pv["objetpv"];
+          $MainG_Pv= $MainG_Pv["objetpv"];
+
       return $classe_Pv+$MainD_Pv+$MainG_Pv;
     }
 
-  public static function initResistance() // résistance de joueur (résistance de la classe + les objets équipés)
+  public  function initResistance() // résistance de joueur (résistance de la classe + les objets équipés)
       {
-        $query="select (resistance)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));";
-        $classe_resistance=  DatabaseObject::query($query);
+        $query="select (resistance)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".$id.")));";
+        $classe_resistance=  selectQuery($query);
         $classe_resistance+=$classe_resistance*getLevel();
-        $query="select (objetresistance)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));";
-        $MainG_res=  DatabaseObject::query($query);
-        $query="select (objetresistance)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));";
-        $MainD_res=  DatabaseObject::query($query);
+        $query="select (objetresistance)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
+        $MainG_res=  selectQuery($query);
+        $query="select (objetresistance)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
+        $MainD_res=  selectQuery($query);
+
+        $classe_resistance=$classe_Pa["pv"];
+        $MainD_res= $MainD_res["objetresistance"];
+          $MainG_res= $MainG_res["objetresistance"];
         return $classe_resistance+$MainD_res+$MainG_res;
       }
-  public static function initForce()
+  public  function initForce()
       {
-        $query="select (laForce)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".getID_J().")));";
-        $classe_force=  DatabaseObject::query($query);
+        $query="select (laForce)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=".$id.")));";
+        $classe_force=  selectQuery($query);
         $classe_force=$classe_force+getLevel()*$classe_force;
-        $query="select (for_ce)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".getID_J().")));";
-        $MainG_force=  DatabaseObject::query($query);
-        $query="select (for_ce)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".getID_J().")));";
-        $MainD_force=  DatabaseObject::query($query);
+        $query="select (for_ce)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
+        $MainG_force=  selectQuery($query);
+        $query="select (for_ce)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
+        $MainD_force=  selectQuery($query);
+
+        $classe_force=$classe_force["laForce"];
+        $MainD_force= $MainD_force["for_ce"];
+          $MainG_force= $MainG_force["for_ce"];
+
         return $classe_force+$MainD_force+$MainG_force;
       }
-    public static function  getID_J()
+    public   function  getID_J()
     { return 1;}
 
 }
