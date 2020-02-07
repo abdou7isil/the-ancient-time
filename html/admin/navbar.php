@@ -20,7 +20,21 @@
 
           <ul class="navbar-nav flex-column mt-4 ">
             <li class="nav-item"><a href="index.php" class="nav-link text-white p-3 mb-2 sidebar-link">
-              <i class="fas fa-home text-light fa-lg mr-3"></i>Accueil</a></li>
+              <i class="fas fa-home text-light fa-lg mr-3"></i>Accueil</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link  text-white p-3 mb-2 sidebar-link text-danger" data-toggle="collapse" href="#collapseExample"
+               role="button" aria-expanded="false" aria-controls="collapseExample">
+                 <i class="fas fa-address-book text-danger fa-lg mr-3"></i>Rapports</a>
+
+              <div class="collapse" id="collapseExample">
+                <div class="">
+                  <a href="signal.php" class="nav-link text-white p-3 mb-2 ml-3 sidebar-link">
+                    <i class="far fa-flag text-light fa-lg mr-3"></i>Signal</a>
+                    <a href="bug.php" class="nav-link text-white p-3 mb-2 ml-3 sidebar-link">
+                      <i class="fas fa-bug text-light fa-lg mr-3"></i>Bug</a>
+                </div>
+              </div>
+            </li>
 
             <li class="nav-item"><a href="profile.php" class="nav-link text-warning p-3 mb-2 sidebar-link">
               <i class="fas fa-user-cog text-warning fa-lg mr-3"></i>Profile</a></li>
@@ -43,10 +57,6 @@
 
             <li class="nav-item"><a href="items.php" class="nav-link text-primary p-3 mb-2 sidebar-link">
               <i class="fas fa-dice text-primary fa-lg mr-3"></i>Items</a></li>
-
-            <li class="nav-item"><a href="rapports.php" class="nav-link text-danger p-3 mb-2 sidebar-link">
-              <i class="fas fa-address-book text-danger fa-lg mr-3"></i>Rapports</a></li>
-
 
             <li class="nav-item"><a href="documentation.php" class="nav-link text-white p-3 mb-2 sidebar-link">
               <i class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation!</a></li>
