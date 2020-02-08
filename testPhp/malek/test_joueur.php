@@ -17,7 +17,7 @@
         echo "<br>";
         $lvl=$joueur->getLevel();
         echo $lvl;
-        $pa =$joueur->pa;
+        $pa =$joueur->getPa();
         echo "<br> pa ".$pa;
 
 

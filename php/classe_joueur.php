@@ -56,13 +56,14 @@
 
 class joueur
 {
-  public $pa;
-  public $pm;
+  protected $pa;
+  protected $pm;
   protected $pv;
   protected $resistance;
   protected $Force;
   protected $ID=1;
   //protected $db=new DatabaseObject();
+
   function __construct()
   {
     $this->pa=$this->initPa();
@@ -202,6 +203,35 @@ class joueur
       }
     public   function  getID_J()
     { return 1;}
+    public function getPa()
+    {return $this->pa;}
+
+    public function setPa($PA)
+    {$this->pa=$PA;}
+
+    public function getPm()
+    {return $this->pm;}
+
+    public function setPm($PM)
+    {$this->pm=$PM;}
+
+    public function getPv()
+    {return $this->pv;}
+
+    public function setPv($PV)
+    {$this->pv=$PV;}
+
+    public function getForce()
+    {return $this->Force;}
+
+    public function setForce($FORCE)
+    {$this->Force=$FORCE;}
+    public function getResistance()
+    {return $this->resistance;}
+
+    public function setResistance($RS)
+    {$this->resistance=$RS;}
+
 
 }
    ?>
