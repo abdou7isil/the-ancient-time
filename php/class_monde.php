@@ -1,10 +1,10 @@
-  <?php include "databaseobject.class.php" ?>
+<?php include "databaseobject.class.php" ?>
 <?php
 
   class Monde extends DatabaseObject {
 
       static public $table_name='monde';
-      static public $db_columns= ['ID_Mond' , 'Nom_Mond' , 'Width' , 'Height' , 'Roi_Mond' , 'ID_Dev'];
+      static public $db_columns= ['ID_Mond' , 'Nom_Mond' , 'Width' , 'Height' , 'date_de_creation'	, 'Roi_Mond'];
 
       public function ajouter() {
         $this->validate();
@@ -18,10 +18,10 @@
         $sql .= "')";
         $result = self::$database->query($sql);
 
-        if(!$result) {
-          die("Query Failed");
+        if($result) {
+          $this->ID_Mond = self::$database->insert_id;
         }else {
-          $this->ID_Monde = self::$database->insert_id;
+          die("Query Failed");
         }
         return $result;
       }
@@ -49,17 +49,16 @@
     public $Nom_Mond;
     public $Width;
     public $Height;
+    public $date_de_creation;
     public $Roi_Mond;
-    public $ID_Dev;
 
     function __construct($args=[])
     {
-      $this->ID_Mond=$args['ID_Mond'] ?? '';
       $this->Nom_Mond=$args['Nom_Mond'] ?? '';
       $this->Width=$args['Width'] ?? '';
       $this->Height=$args['Height'] ?? '';
+      $this->date_de_creation=$args['date_de_creation'] ?? '';
       $this->Roi_Mond=$args['Roi_Mond'] ?? '';
-      $this->ID_Dev=$args['ID_Dev'] ?? '';
     }
     public function name(){
       return "{$this->ID_Mond} - {$this->Nom_Mond}";

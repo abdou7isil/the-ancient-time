@@ -45,7 +45,6 @@ class Dungeon extends DatabaseObject {
 
   function __construct($args=[])
   {
-    $this->ID_Dun=$args['ID_Dun'] ?? '';
     $this->Nom_Dun=$args['Nom_Dun'] ?? '';
     $this->Width_Dun=$args['Width_Dun'] ?? '';
     $this->Height_Dun=$args['Height_Dun'] ?? '';

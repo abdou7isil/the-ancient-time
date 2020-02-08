@@ -35,6 +35,17 @@ class Evenement extends DatabaseObject {
       return $result;
     }
 
+    static  public function count_all_evenements(){
+        $sql = "SELECT COUNT(*) as total FROM evenement " ;
+        $result = self::$database->query($sql);
+        if(!$result) {
+          exit("Database query failed.");
+        }
+        $row = $result->fetch_array();
+        return array_shift($row);
+      }
+
+
   public $ID_Event;
   public $Nom_Event;
   public $Date_Debut_Event;
@@ -44,7 +55,6 @@ class Evenement extends DatabaseObject {
 
   function __construct($args=[])
   {
-    $this->ID_Event=$args['ID_Event'] ?? '';
     $this->Nom_Event=$args['Nom_Event'] ?? '';
     $this->Date_Debut_Event=$args['Date_Debut_Event'] ?? '';
     $this->Date_Fin_Event=$args['Date_Fin_Event'] ?? '';

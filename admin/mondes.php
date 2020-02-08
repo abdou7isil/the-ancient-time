@@ -15,9 +15,6 @@
   $pagination = new Pagination($current_page, $per_page, $total_count);
 
   $sql = "SELECT * FROM monde";
-  //$sql .=" INNER JOIN patient ";
-  //$sql .="ON rendez_vous.id_patient = patient.id_patient";
-//  $sql.= " ORDER BY date_rendez_vous ASC,heure_d ASC ";
   $sql .= " LIMIT {$per_page} ";
   $sql .= "OFFSET {$pagination->offset()}";
   $mondes = Monde::query($sql);
@@ -54,7 +51,6 @@
     include'../html/admin/navbar.php'
       ?>
       <section>
-        <section>
 
         <div class="container-fluid ">
           <div class="row">
@@ -71,6 +67,7 @@
                         <th scope="col">Height</th>
                         <th scope="col">Date de Création</th>
                         <th scope="col">Roi Du Monde</th>
+                        <th scope="col">Dungeon</th>
                         <th scope="col" class="text-center">Suprimer</th>
 
                       </tr>
@@ -94,7 +91,8 @@
                         echo h($diff->format('%y'));
                          */?></td>
                          <td><?php echo h($row['Roi_Mond']); ?></td>
-                        <td class="text-center  text-light"><a href="monde/suprimermonde.php?ID_Mond=<?php echo ($row['ID_Mond']);?>" name="button" class="btn btn-danger" >Suprimer</a>
+                         <td class="text-center  text-light"><a href="dungeon.php?ID_Mond=<?php echo ($row['ID_Mond']);?>" name="button" class="btn btn-success" >Dungeon</a>
+                         <td class="text-center  text-light"><a href="monde/suprimermonde.php?ID_Mond=<?php echo ($row['ID_Mond']);?>" name="button" class="btn btn-danger" >Suprimer</a>
                       </tr>
                       <?php }?>
                     </tbody>
@@ -110,7 +108,7 @@
                    <ul class="pagination justify-content-center">
 
                    <?php
-                   $url = 'rendez-vous.php';
+                   $url = 'monde.php';
                    echo $pagination->page_links($url);
                    ?>
                  </ul>
