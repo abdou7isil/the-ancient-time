@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 08 fév. 2020 à 10:27
+-- Généré le :  sam. 08 fév. 2020 à 11:47
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -375,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `joueur` (
 --
 
 INSERT INTO `joueur` (`ID_J`, `Nom_J`, `Prenom_J`, `Date_Nais_J`, `Nom_Compt`, `Email_J`, `Mot_Passe`, `Point`, `Point_Rest_Repart`, `Reputation`, `Etat_Disscut`, `Sold_Or`, `PA`, `PM`, `ID_Ad`, `ID_Liste`, `ID_Guild`, `ID_Class`, `MainG`, `MainD`) VALUES
-(1, 'abdou', 'malek', NULL, 'testcompte', NULL, 'aaaa', NULL, NULL, NULL, NULL, 800, NULL, NULL, NULL, NULL, NULL, 1, 1, 7);
+(1, 'abdou', 'malek', NULL, 'testcompte', NULL, 'aaaa', NULL, NULL, NULL, NULL, 800, NULL, NULL, NULL, NULL, NULL, 1, 3, 2);
 
 -- --------------------------------------------------------
 
