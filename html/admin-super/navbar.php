@@ -15,48 +15,34 @@
           <a href="index.php" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border font-weight-bold"><h3 class="font-weight-bold">
             <?php //if ($session_secretaire->is_logged_in()) {
               //echo $session_secretaire->username;
-            //} ?>Admin</h3></a>
+            //} ?>Super Admin</h3></a>
           <div class="" style="height:500px; overflow : auto;">
 
           <ul class="navbar-nav flex-column mt-4 ">
             <li class="nav-item"><a href="index.php" class="nav-link text-white p-3 mb-2 sidebar-link">
-              <i class="fas fa-home text-light fa-lg mr-3"></i>Accueil</a>
-            </li>
-            <li class="nav-item"> <a class="nav-link  text-white p-3 mb-2 sidebar-link text-danger" data-toggle="collapse" href="#collapseExample"
-               role="button" aria-expanded="false" aria-controls="collapseExample">
-                 <i class="fas fa-address-book text-danger fa-lg mr-3"></i>Rapports</a>
+              <i class="fas fa-home text-light fa-lg mr-3"></i>Accueil</a></li>
 
-              <div class="collapse" id="collapseExample">
-                <div class="">
-                  <a href="signal.php" class="nav-link text-white p-2 mb-2 ml-3 sidebar-link">
-                    <i class="far fa-flag text-light fa-lg mr-3"></i>Signal</a>
-                    <a href="bug.php" class="nav-link text-white p-2 mb-2 ml-3 sidebar-link">
-                      <i class="fas fa-bug text-light fa-lg mr-3"></i>Bug</a>
-                </div>
-              </div>
-            </li>
-
-            <li class="nav-item"><a href="profile.php" class="nav-link text-warning p-3 mb-2 sidebar-link">
-              <i class="fas fa-user-cog text-warning fa-lg mr-3"></i>Profile</a></li>
+            <li class="nav-item"><a href="profile.php" class="nav-link text-white p-3 mb-2 sidebar-link">
+              <i class="fas fa-user-cog text-light fa-lg mr-3"></i>Profile</a></li>
 
 
-            <li class="nav-item"><a href="mondes.php" class="nav-link p-3 mb-2 sidebar-link text-info">
-              <i class="fas fa-globe-europe text-info fa-lg mr-3"></i>Mondes</a></li>
+            <li class="nav-item"><a href="mondes.php" class="nav-link p-3 mb-2 sidebar-link text-danger">
+              <i class="fas fa-globe-europe text-danger fa-lg mr-3"></i>Mondes</a></li>
 
-            <li class="nav-item"><a href="monstre.php" class="nav-link p-3 mb-2 sidebar-link text-danger">
-              <i class="fas fa-spider text-danger fa-lg mr-3"></i>Monstres</a></li>
-
-            <li class="nav-item"><a href="joueurs.php" class="nav-link text-warning p-3 mb-2 sidebar-link">
-              <i class="fas fa-users text-warning fa-lg mr-3"></i>Joueurs</a></li>
-
-            <li class="nav-item"><a href="evenement.php" class="nav-link text-info p-3 mb-2 sidebar-link">
-              <i class="far fa-calendar-check text-info fa-lg mr-3"></i>évenement</a></li>
+            <li class="nav-item"><a href="joueurs.php" class="nav-link text-white p-3 mb-2 sidebar-link">
+              <i class="fas fa-users text-light fa-lg mr-3"></i>Joueurs</a></li>
 
             <li class="nav-item"><a href="magasin.php" class="nav-link text-success p-3 mb-2 sidebar-link">
               <i class="fas fa-donate text-success fa-lg mr-3"></i>Magasin</a></li>
 
-            <li class="nav-item"><a href="items.php" class="nav-link text-primary p-3 mb-2 sidebar-link">
-              <i class="fas fa-dice text-primary fa-lg mr-3"></i>Items</a></li>
+            <li class="nav-item"><a href="items.php" class="nav-link text-white p-3 mb-2 sidebar-link">
+              <i class="fas fa-shield-alt text-light fa-lg mr-3"></i>Items</a></li>
+
+            <li class="nav-item"><a href="rapports.php" class="nav-link text-white p-3 mb-2 sidebar-link">
+              <i class="fas fa-address-book text-light fa-lg mr-3"></i>Rapports</a></li>
+
+            <li class="nav-item"><a href="evenement.php" class="nav-link text-white p-3 mb-2 sidebar-link">
+              <i class="far fa-calendar-check text-light fa-lg mr-3"></i>évenement</a></li>
 
             <li class="nav-item"><a href="documentation.php" class="nav-link text-white p-3 mb-2 sidebar-link">
               <i class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation!</a></li>

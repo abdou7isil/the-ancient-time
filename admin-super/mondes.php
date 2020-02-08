@@ -51,7 +51,7 @@
   </head>
   <body>
     <?php
-    include'../html/admin/navbar.php'
+    include'../html/admin-super/navbar.php'
       ?>
       <section>
         <section>
@@ -94,7 +94,7 @@
                         echo h($diff->format('%y'));
                          */?></td>
                          <td><?php echo h($row['Roi_Mond']); ?></td>
-                        <td class="text-center  text-light"><a href="monde/suprimermonde.php?ID_Mond=<?php echo ($row['ID_Mond']);?>" name="button" class="btn btn-danger" >Suprimer</a>
+                        <td class="text-center  text-light"><a href="suprimermonde.php?ID_Mond=<?php echo ($row['ID_Mond']);?>" name="button" class="btn btn-danger" >Suprimer</a>
                       </tr>
                       <?php }?>
                     </tbody>

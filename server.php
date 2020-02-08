@@ -10,7 +10,7 @@ $password_2 ="";
  $errors = array();
 	$_SESSION['success'] = "";
 
-$db=mysqli_connect('localhost','root','basma123','ancient_time_db');
+$db=mysqli_connect('localhost','root','','ancient_time_db');
  if (isset($_POST['reg_user'])) {
 
 // receive all input values from the form

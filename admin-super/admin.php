@@ -2,15 +2,15 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
-<link rel="stylesheet" type="text/css" href="css/default.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="../css/default.css" media="screen"/>
 <title>The Ancient Time</title>
 
 </head>
 <body>
 
-<div id="Layer1" ><img src="img/logo.png" alt="" width="232" height="411" /></div>
+<div id="Layer1" ><img src="../img/logo.png" alt="" width="232" height="411" /></div>
 <div class="header" id="Layer3">
-  <pre><a href="register.php" class="style8 style12">
+  <pre><a href="#" class="style8 style12">
 
 Create an account</a>
 
@@ -22,10 +22,11 @@ Create an account</a>
   </form>
 
   <pre><a href="#" class="style8 style12">Forgot your password ?</a>
-  </pre>
+
+</pre>
 </div>
 
-<div id="Layer7"><img src="img/45545444.png" alt="" width="132" height="89" /></div>
+<div id="Layer7"><img src="../img/45545444.png" alt="" width="132" height="89" /></div>
 <div class="container">
    <div id="Layer5">
   <h1 align="center" class="style4">&nbsp;</h1>
@@ -33,17 +34,12 @@ Create an account</a>
 </div>
    <div class="gfx"></div>
   <div class="top">
-    <div class="navigation">
-      <a href="#" id="selected">home</a>
-      <a href="#">forum</a> <a href="#">property</a>
-      <a href="#">player</a>
-       <a href="history.php">history</a> </div>
+    <div class="navigation"> <a href="#" id="selected">home</a> <a href="#">forum</a> <a href="#">property</a> <a href="#">player</a> <a href="#">history</a> </div>
     <div class="pattern"><span></span></div>
     <div class="header">
 
       <h1 align="right">  The Ancient Time </h1>
-      <p  align="center" class="style2">only the strongest will survive</P><br>
-      <p   align="center" > the greatest war and treasure hunt </p>
+      <p  align="center" class="style2"> the greatest war and treasure hunt </p>
     </div>
     <div class="pattern"><span></span></div>
   </div>
