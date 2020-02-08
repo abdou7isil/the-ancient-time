@@ -8,14 +8,9 @@
   <?php
 
         include '../../php/classe_joueur.php';
-        $joueur=new joueur(1);
-        $cls=$joueur->getClass();
-        echo"<br> cls <br>";
-        echo ($cls);
-
-        echo "<br>";
-        $lvl=$joueur->getLevel();
-        echo $lvl;
+        //echo'start \n';
+        $joueur=new joueur();
+      $joueur->afficher();
 
 
     ?>
