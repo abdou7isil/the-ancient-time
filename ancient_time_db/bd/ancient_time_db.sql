@@ -176,14 +176,14 @@ CREATE TABLE IF NOT EXISTS `comptable` (
   `Email` varchar(20) NOT NULL,
   `Mot_Passe` varchar(10) NOT NULL,
   `Date_Debut` date NOT NULL,
-  `Date_Fin` date NOT NULL,
   `Salair` float NOT NULL,
-  `ID_Sad` varchar(15) NOT NULL,
-  PRIMARY KEY (`ID_Comptable`),
-  KEY `ID_Sad` (`ID_Sad`)
+  PRIMARY KEY (`ID_Comptable`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- insertion des valeurs comptable
+INSERT INTO `comptable` (`ID_Comptable`, `Nom_Comptable`, `Prenom_Comptable`, `Date_Nais_Com`, `Email`, `Mot_Passe`, `Date_Debut`, `Salair`) VALUES
+(1, 'hababou', 'mounir', '1996-01-22', 'no_email', '000', now(), 20000);
 
 --
 -- Structure de la table `developpeur`
@@ -615,12 +615,15 @@ CREATE TABLE IF NOT EXISTS `revenus` (
   `ID_Rev` int(4) NOT NULL AUTO_INCREMENT,
   `Type_Rev` varchar(15) NOT NULL,
   `Mont_Rev` float NOT NULL,
-  `ID_Comptable` int(2) NOT NULL,
-  PRIMARY KEY (`ID_Rev`),
-  KEY `ID_Comptable` (`ID_Comptable`)
+  PRIMARY KEY (`ID_Rev`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+-- insertion des revenus
+INSERT INTO `revenus` (`ID_Rev`, `Type_Rev`, `Mont_Rev`) VALUES
+(1, 'or_pack_100', 100),
+(2, 'or_pack_200', 200),
+(3, 'or_pack_300', 300);
 
 --
 -- Structure de la table `se_deplacer`
@@ -717,8 +720,8 @@ ALTER TABLE `bug`
 --
 -- Contraintes pour la table `comptable`
 --
-ALTER TABLE `comptable`
-  ADD CONSTRAINT `comptable_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
+--  ALTER TABLE `comptable`
+--  ADD CONSTRAINT `comptable_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
 
 --
 -- Contraintes pour la table `developpeur`
@@ -831,8 +834,8 @@ ALTER TABLE `recuperer`
 --
 -- Contraintes pour la table `revenus`
 --
-ALTER TABLE `revenus`
-  ADD CONSTRAINT `revenus_ibfk_1` FOREIGN KEY (`ID_Comptable`) REFERENCES `comptable` (`ID_Comptable`);
+-- ALTER TABLE `revenus`
+--  ADD CONSTRAINT `revenus_ibfk_1` FOREIGN KEY (`ID_Comptable`) REFERENCES `comptable` (`ID_Comptable`);
 
 --
 -- Contraintes pour la table `se_deplacer`
