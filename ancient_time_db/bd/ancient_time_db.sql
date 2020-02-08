@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 20 jan. 2020 à 19:59
+-- Généré le :  sam. 08 fév. 2020 à 09:34
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -221,6 +221,25 @@ CREATE TABLE IF NOT EXISTS `disscussion` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `dungion`
+--
+
+DROP TABLE IF EXISTS `dungion`;
+CREATE TABLE IF NOT EXISTS `dungion` (
+  `ID_Dun` int(3) NOT NULL AUTO_INCREMENT,
+  `Nom_Dun` varchar(15) NOT NULL,
+  `Width_Dun` float NOT NULL,
+  `Height_Dun` float NOT NULL,
+  `difficult_Dun` int(2) NOT NULL,
+  `Duree` time NOT NULL,
+  `ID_Mond` int(2) NOT NULL,
+  PRIMARY KEY (`ID_Dun`),
+  KEY `ID_Mond` (`ID_Mond`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `entamer`
 --
 
@@ -235,6 +254,53 @@ CREATE TABLE IF NOT EXISTS `entamer` (
 
 -- --------------------------------------------------------
 
+--
+-- Structure de la table `etage`
+--
+
+DROP TABLE IF EXISTS `etage`;
+CREATE TABLE IF NOT EXISTS `etage` (
+  `ID_Etag` int(4) NOT NULL AUTO_INCREMENT,
+  `Num_Etag` int(2) NOT NULL,
+  `Difficult` int(2) NOT NULL,
+  `ID_Dun` int(3) NOT NULL,
+  PRIMARY KEY (`ID_Etag`),
+  KEY `ID_Dun` (`ID_Dun`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `evenement`
+--
+
+DROP TABLE IF EXISTS `evenement`;
+CREATE TABLE IF NOT EXISTS `evenement` (
+  `ID_Event` int(4) NOT NULL AUTO_INCREMENT,
+  `Nom_Event` varchar(15) NOT NULL,
+  `Date_Debut_Event` date NOT NULL,
+  `Date_Fin_Event` date NOT NULL,
+  `Min_Level` int(3) NOT NULL,
+  `ID_Mond` int(2) NOT NULL,
+  PRIMARY KEY (`ID_Event`),
+  KEY `ID_Mond` (`ID_Mond`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `friend_requests`
+--
+
+DROP TABLE IF EXISTS `friend_requests`;
+CREATE TABLE IF NOT EXISTS `friend_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` int(11) NOT NULL,
+  `recipient` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `friend_requests_ibfk_1` (`sender`),
+  KEY `friend_requests_ibfk_2` (`recipient`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -266,26 +332,6 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
   `Date_Inv` date NOT NULL,
   PRIMARY KEY (`ID_Inv`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `friend_requests`
---
-
-DROP TABLE IF EXISTS `invitation`;
-DROP TABLE IF EXISTS `friend_requests`;
-CREATE TABLE IF NOT EXISTS friend_requests (
-
-id int(11) NOT NULL auto_increment,
-
-sender int(11) NOT NULL,
-
-recipient int(11) NOT NULL,
-
-PRIMARY KEY  (id)
-
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -324,37 +370,20 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   KEY `MainD` (`MainD`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `npc` (
-  `id_npc` mediumint(10) NOT NULL auto_increment,
-  `name` varchar(20) NOT NULL default '',
-  `image` varchar(30) NOT NULL default '',
-  `sector_id` mediumint(10) NOT NULL default '0',
-  `x` varchar(15) NOT NULL default '',
-  `y` varchar(15) NOT NULL default '',
-  `services` varchar(255) NOT NULL default '',
-  `weapons` text NOT NULL,
-  `items` varchar(255) NOT NULL default '',
-  KEY `id_npc` (`id_npc`)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `members`
 --
-DROP TABLE IF EXISTS `liste_amis`;
+
 DROP TABLE IF EXISTS `members`;
-CREATE TABLE IF NOT EXISTS members (
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `friends` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-id int(11) NOT NULL auto_increment,
-
-username varchar(255) NOT NULL,
-
-friends text NOT NULL,
-
-PRIMARY KEY  (id)
-
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 -- --------------------------------------------------------
 
 --
@@ -372,57 +401,6 @@ CREATE TABLE IF NOT EXISTS `message` (
   KEY `ID_J` (`ID_J`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
---
--- Structure de la table `dungion`
---
-
-DROP TABLE IF EXISTS `dungion`;
-CREATE TABLE IF NOT EXISTS `dungion` (
-  `ID_Dun` int(3) NOT NULL AUTO_INCREMENT,
-  `Nom_Dun` varchar(15) NOT NULL,
-  `Width_Dun` float NOT NULL,
-  `Height_Dun` float NOT NULL,
-  `difficult_Dun` int(2) NOT NULL,
-  `Duree` time NOT NULL,
-  `ID_Mond` int(2) NOT NULL,
-  PRIMARY KEY (`ID_Dun`),
-  KEY `ID_Mond` (`ID_Mond`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
---
--- Structure de la table `etage`
---
-
-DROP TABLE IF EXISTS `etage`;
-CREATE TABLE IF NOT EXISTS `etage` (
-  `ID_Etag` int(4) NOT NULL AUTO_INCREMENT,
-  `Num_Etag` int(2) NOT NULL,
-  `Difficult` int(2) NOT NULL,
-  `ID_Dun` int(3) NOT NULL,
-  PRIMARY KEY (`ID_Etag`),
-  KEY `ID_Dun` (`ID_Dun`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `evenement`
---
-
-DROP TABLE IF EXISTS `evenement`;
-CREATE TABLE IF NOT EXISTS `evenement` (
-  `ID_Event` int(4) NOT NULL AUTO_INCREMENT,
-  `Nom_Event` varchar(15) NOT NULL,
-  `Date_Debut_Event` date NOT NULL,
-  `Date_Fin_Event` date NOT NULL,
-  `Min_Level` int(3) NOT NULL,
-  `ID_Mond` int(2) NOT NULL,
-  PRIMARY KEY (`ID_Event`),
-  KEY `ID_Mond` (`ID_Mond`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 -- --------------------------------------------------------
 
 --
@@ -435,9 +413,9 @@ CREATE TABLE IF NOT EXISTS `monde` (
   `Nom_Mond` varchar(20) NOT NULL,
   `Width` float NOT NULL,
   `Height` float NOT NULL,
-  `date_de_creation` date,
+  `date_de_creation` date DEFAULT NULL,
   `Roi_Mond` varchar(15) NOT NULL,
-  `ID_Dev` int(2),
+  `ID_Dev` int(2) DEFAULT NULL,
   PRIMARY KEY (`ID_Mond`),
   KEY `ID_Dev` (`ID_Dev`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -463,6 +441,26 @@ CREATE TABLE IF NOT EXISTS `monstre` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `npc`
+--
+
+DROP TABLE IF EXISTS `npc`;
+CREATE TABLE IF NOT EXISTS `npc` (
+  `id_npc` mediumint(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL DEFAULT '',
+  `image` varchar(30) NOT NULL DEFAULT '',
+  `sector_id` mediumint(10) NOT NULL DEFAULT '0',
+  `x` varchar(15) NOT NULL DEFAULT '',
+  `y` varchar(15) NOT NULL DEFAULT '',
+  `services` varchar(255) NOT NULL DEFAULT '',
+  `weapons` text NOT NULL,
+  `items` varchar(255) NOT NULL DEFAULT '',
+  KEY `id_npc` (`id_npc`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `objet`
 --
 
@@ -470,6 +468,7 @@ DROP TABLE IF EXISTS `objet`;
 CREATE TABLE IF NOT EXISTS `objet` (
   `ID_Obj` int(4) NOT NULL AUTO_INCREMENT,
   `Nom_Obj` varchar(15) NOT NULL,
+  `prix_objet` double NOT NULL DEFAULT '0',
   `Etat_Obj` varchar(7) NOT NULL,
   `for_ce` int(11) NOT NULL,
   `objetPa` int(11) DEFAULT NULL,
@@ -477,7 +476,21 @@ CREATE TABLE IF NOT EXISTS `objet` (
   `objetPv` int(11) DEFAULT NULL,
   `objetResistance` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_Obj`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `objet`
+--
+
+INSERT INTO `objet` (`ID_Obj`, `Nom_Obj`, `prix_objet`, `Etat_Obj`, `for_ce`, `objetPa`, `objetPm`, `objetPv`, `objetResistance`) VALUES
+(1, 'épée', 10, 'neuf', 70, 0, 0, 80, 15),
+(2, 'arc', 8, 'neuf', 18, 2, 2, 20, 3),
+(3, 'dague', 6, 'neuf', 20, 1, 2, 40, 5),
+(4, 'baton', 7, 'neuf', 40, 1, 0, 60, 7),
+(5, 'massue', 9, 'neuf', 80, 1, 1, 30, 5),
+(6, 'bouclier_acier', 6, 'neuf', 5, 0, 0, 80, 15),
+(7, 'bc_argente', 8, 'neuf', 10, 0, 0, 100, 30),
+(8, 'bc_diamand', 10, 'neuf', 20, 0, 0, 120, 30);
 
 -- --------------------------------------------------------
 
@@ -732,17 +745,17 @@ ALTER TABLE `evenement`
   ADD CONSTRAINT `evenement_ibfk_1` FOREIGN KEY (`ID_Mond`) REFERENCES `monde` (`ID_Mond`);
 
 --
--- Contraintes pour la table `guild`
---
-ALTER TABLE `guild`
-  ADD CONSTRAINT `guild_ibfk_1` FOREIGN KEY (`ID_Mond`) REFERENCES `monde` (`ID_Mond`);
-
---
 -- Contraintes pour la table `friend_requests`
 --
 ALTER TABLE `friend_requests`
   ADD CONSTRAINT `friend_requests_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `joueur` (`ID_J`),
   ADD CONSTRAINT `friend_requests_ibfk_2` FOREIGN KEY (`recipient`) REFERENCES `joueur` (`ID_J`);
+
+--
+-- Contraintes pour la table `guild`
+--
+ALTER TABLE `guild`
+  ADD CONSTRAINT `guild_ibfk_1` FOREIGN KEY (`ID_Mond`) REFERENCES `monde` (`ID_Mond`);
 
 --
 -- Contraintes pour la table `joueur`
@@ -772,12 +785,6 @@ ALTER TABLE `monde`
 --
 ALTER TABLE `monstre`
   ADD CONSTRAINT `monstre_ibfk_1` FOREIGN KEY (`ID_Etag`) REFERENCES `etage` (`ID_Etag`);
-
---
--- Contraintes pour la table `objet`
---
--- ALTER TABLE `objet`
---  ADD CONSTRAINT `objet_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
 
 --
 -- Contraintes pour la table `objet_inventair`
@@ -834,14 +841,6 @@ ALTER TABLE `sig_nal`
   ADD CONSTRAINT `sig_nal_ibfk_1` FOREIGN KEY (`ID_J`) REFERENCES `joueur` (`ID_J`),
   ADD CONSTRAINT `sig_nal_ibfk_2` FOREIGN KEY (`ID_Rapp`) REFERENCES `rapport` (`ID_Rapp`);
 COMMIT;
-
--- modification table objet
-
-ALTER TABLE `objet` ADD `prix_objet` DOUBLE NOT NULL DEFAULT '0' AFTER `Nom_Obj`;
-
--- insertion des valeurs
-
-INSERT INTO `objet` (`ID_Obj`, `Nom_Obj`, `prix_objet`, `Etat_Obj`, `for_ce`, `objetPa`, `objetPm`, `objetPv`, `objetResistance`) VALUES ('1', 'épée', '10', 'neuf', '70', '0', '0', '80', '15'), ('2', 'arc', '8', 'neuf', '18', '2', '2', '20', '3'), ('4', 'baton', '7', 'neuf', '40', '1', '0', '60', '7'), ('5', 'massue', '9', 'neuf', '80', '1', '1', '30', '5'), ('3', 'dague', '6', 'neuf', '20', '1', '2', '40', '5'), ('6', 'bouclier_acier', '6', 'neuf', '5', '0', '0', '80', '15'), ('7', 'bouclier_argenté', '8', 'neuf', '10', '0', '0', '100', '30'), ('8', 'bouclier_diamand', '10', 'neuf', '20', '0', '0', '120', '30')
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
