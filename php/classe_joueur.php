@@ -32,14 +32,12 @@
   }
 
   function selectQuery($sql)
-  { try {
+  {
     $conn=connectDB();
     $result = $conn->query($sql);
 
     return $result->fetch_assoc();
-}catch(Excepetion $e)
-  {
-  }
+
 }
 
 /*  function selectFirstQuery($sql)
@@ -58,25 +56,25 @@
 
 class joueur
 {
-  protected $pa;
-  protected $pm;
+  public $pa;
+  public $pm;
   protected $pv;
   protected $resistance;
   protected $Force;
   protected $ID=1;
   //protected $db=new DatabaseObject();
-/*  function __construct()
+  function __construct()
   {
     $this->pa=$this->initPa();
-    $this->pm=initPm();
+  /*  $this->pm=initPm();
     $this->pv=initPv();
     $this->resistance=initResistance();
-    $this->pv=initForce();
-  }*/
-  function __construct($id)
+    $this->pv=initForce();*/
+  }
+  /*function __construct($id)
   {
     $this->ID=$id;
-  }
+  }*/
 
   public  function getClass() // retourne la classe de ce joueur , ou besoin de cette fonction dans le calule pa/pm/pv/résistance
      {
@@ -106,12 +104,16 @@ class joueur
     {
 
   $id=$this->getID_J();
-  $query="select (pa)from classe where (ID_classe = (select(ID_classe) from joueur where (ID_J=". $id.")));";
+  $query="select (pa)from classe where (ID_class = (select(ID_class) from joueur where (ID_J=". $id.")));";
+
   $classe_Pa=  selectQuery($query);
+
+
   $classe_Pa=$classe_Pa["pa"];
 
   $query="select (objetpa)from objet where (ID_obj = (select(MainG) from joueur where (ID_J=".$id.")));";
   $MainG_Pa= selectQuery($query);
+
   $MainG_Pa= $MainG_Pa["objetpa"];
   $query="select (objetpa)from objet where (ID_obj = (select(MainD) from joueur where (ID_J=".$id.")));";
   $MainD_Pa= selectQuery($query);

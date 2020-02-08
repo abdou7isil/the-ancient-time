@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 08 fév. 2020 à 09:34
+-- Généré le :  sam. 08 fév. 2020 à 10:27
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -342,25 +342,25 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
 DROP TABLE IF EXISTS `joueur`;
 CREATE TABLE IF NOT EXISTS `joueur` (
   `ID_J` int(4) NOT NULL AUTO_INCREMENT,
-  `Nom_J` varchar(15) NOT NULL,
-  `Prenom_J` varchar(15) NOT NULL,
-  `Date_Nais_J` date NOT NULL,
-  `Nom_Compt` varchar(15) NOT NULL,
-  `Email_J` varchar(20) NOT NULL,
-  `Mot_Passe` varchar(10) NOT NULL,
-  `Point` int(11) NOT NULL,
-  `Point_Rest_Repart` int(11) NOT NULL,
-  `Reputation` int(11) NOT NULL,
-  `Etat_Disscut` int(11) NOT NULL,
-  `Sold_Or` int(11) NOT NULL,
-  `PA` int(11) NOT NULL,
-  `MA` int(11) NOT NULL,
-  `ID_Ad` int(3) NOT NULL,
-  `ID_Liste` int(4) NOT NULL,
-  `ID_Guild` int(3) NOT NULL,
-  `ID_Class` int(11) NOT NULL,
-  `MainG` int(11) NOT NULL,
-  `MainD` int(11) NOT NULL,
+  `Nom_J` varchar(15) DEFAULT NULL,
+  `Prenom_J` varchar(15) DEFAULT NULL,
+  `Date_Nais_J` date DEFAULT NULL,
+  `Nom_Compt` varchar(15) DEFAULT NULL,
+  `Email_J` varchar(20) DEFAULT NULL,
+  `Mot_Passe` varchar(10) DEFAULT NULL,
+  `Point` int(11) DEFAULT NULL,
+  `Point_Rest_Repart` int(11) DEFAULT NULL,
+  `Reputation` int(11) DEFAULT NULL,
+  `Etat_Disscut` int(11) DEFAULT NULL,
+  `Sold_Or` int(11) DEFAULT NULL,
+  `PA` int(11) DEFAULT NULL,
+  `PM` int(11) DEFAULT NULL,
+  `ID_Ad` int(3) DEFAULT NULL,
+  `ID_Liste` int(4) DEFAULT NULL,
+  `ID_Guild` int(3) DEFAULT NULL,
+  `ID_Class` int(11) DEFAULT NULL,
+  `MainG` int(11) DEFAULT NULL,
+  `MainD` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID_J`),
   KEY `ID_Ad` (`ID_Ad`),
   KEY `ID_Liste` (`ID_Liste`),
@@ -368,7 +368,14 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   KEY `ID_Class` (`ID_Class`),
   KEY `MainG` (`MainG`),
   KEY `MainD` (`MainD`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `joueur`
+--
+
+INSERT INTO `joueur` (`ID_J`, `Nom_J`, `Prenom_J`, `Date_Nais_J`, `Nom_Compt`, `Email_J`, `Mot_Passe`, `Point`, `Point_Rest_Repart`, `Reputation`, `Etat_Disscut`, `Sold_Or`, `PA`, `PM`, `ID_Ad`, `ID_Liste`, `ID_Guild`, `ID_Class`, `MainG`, `MainD`) VALUES
+(1, 'abdou', 'malek', NULL, 'testcompte', NULL, 'aaaa', NULL, NULL, NULL, NULL, 800, NULL, NULL, NULL, NULL, NULL, 1, 1, 7);
 
 -- --------------------------------------------------------
 
