@@ -177,6 +177,28 @@ class DatabaseObject {
 
   }
 
+  static public function find_all_monde() {
+    $sql = "SELECT * FROM monde ";
+  //  $sql .=" INNER JOIN monde ";
+    //$sql .="ON evenement.ID_Mond = monde.ID_Mond ORDER BY Nom_Mond ASC";
+    $result = self::$database->query($sql);
+    if(!$result) {
+      exit("Database query failed.");
+    }
+    return $result;
+  }
+  static public function find_all_dungeon_monde(){
+    $sql = "SELECT * FROM dungeon";
+    $sql .=" INNER JOIN monde ";
+    $sql .="ON dungeon.ID_Mond = monde.ID_Mond ";
+    $result = self::$database->query($sql);
+    if(!$result) {
+      exit("Database query failed.");
+    }
+    return $result;
+  }
+
 }
+
 
 ?>

@@ -24,7 +24,7 @@
             </li>
             <li class="nav-item"> <a class="nav-link  text-white p-3 mb-2 sidebar-link text-danger" data-toggle="collapse" href="#collapseExample"
                role="button" aria-expanded="false" aria-controls="collapseExample">
-                 <i class="fas fa-address-book text-danger fa-lg mr-3"></i>Rapports</a>
+                 <i class="fas fa-address-book text-danger fa-lg mr-3"></i>Rapports<i class="ml-3 fas fa-caret-down"></i></a>
 
               <div class="collapse" id="collapseExample">
                 <div class="">
