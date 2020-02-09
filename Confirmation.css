@@ -1,4 +1,3 @@
-
 #DemonZone {
 	position:absolute;
 	left:944px;
@@ -15,6 +14,14 @@
 	height:295px;
 	z-index:5;
 }
+#DemonZone2 {
+	position: absolute;
+	left: 968px;
+	top: 323px;
+	width: 289px;
+	height: 295px;
+	z-index: 5;
+}
 .msgConfirm {
 	font-size: medium;
 	font-family: "Courier New", Courier, monospace;
@@ -27,12 +34,43 @@
 }
 #forgPass{
 	font-family:"Times New Roman", Times, serif;
-	font-size:28px;
+	font-size:25px;
 	font-weight:bold;
 	color:#333;}
 .style2 {font-size: 9}
 #indication{
 	font-family: "Courier New", Courier, monospace;
-	font-size:medium;
+	font-size:16px;
 		color:#333;
+}
+#formForgPass input[id="mailInpt"], input[id="phoneInpt"]{
+height:30px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+padding-left:5px;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:100%;
+ margin-bottom:10px;
+}
+#formForgPass label{
+font-family:"Times New Roman", Times, serif;
+	font-size:18px;
+		color:#000;
+}
+#formForgPass button{
+height:30px;
+width:100px;
+background-color:#336633;
+color:#FFFFFF;
+boder-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin-top:30px;	
+margin-top:10px;	
+}
+#formForgPass button:hover{
+border:1px solid #FF0000;
+color:#000;
 }

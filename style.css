@@ -9,7 +9,25 @@
 	z-index: 1;
 	visibility: visible;
 }
-
+#DemonLogo {
+	position:absolute;
+	left:944px;
+	top:1100px;
+	width:289px;
+	height:295px;
+	z-index:5;
+}
+#DemonLogo1 {
+	position:absolute;
+	left:944px;
+	top:1285px;
+	width:289px;
+	height:295px;
+	z-index:5;
+}
+.container .content p {
+	font-size: 16px;
+}
 #BoxZone {
 width:100;
 	height:100;	
@@ -25,12 +43,12 @@ width:100;
 }
 
 #BarLog {
-	position:absolute;
-	left:52px;
-	top:177px;
-	width:160px;
-	height:317px;
-	z-index:2;
+	position: absolute;
+	left: 52px;
+	top: 177px;
+	width: 160px;
+	height: 450px;
+	z-index: 2;
 	border: 3px solid #FFFFCC;
 	margin-right: auto;
 	margin-left: auto;
@@ -41,32 +59,76 @@ width:100;
 	-webkit-border-radius: 10px;
 	box-shadow: 4px 4px 6px black;
 }
-
-
-
+#BarPlay {
+	position:absolute;
+	left:30px;
+	top:177px;
+	width:180px;
+	height:250px;
+	z-index:2;
+	border: 3px solid #FFFFCC;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(img/bk2.jpg);
+	padding: 30px;
+	boder-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	box-shadow: 4px 4px 6px black;
+}
+#BarPlay a {
+	font-family:font-family: "Courier New", Courier, monospace;
+	font-size:14px;
+	color:#FFF;
+	font: normal 1.9em serif;
+	line-height: 50px;
+	margin: 0 16px;
+	text-decoration: none;
+}
+#BarMenu {
+	position: absolute;
+	left: 85px;
+	top: 166px;
+	width: 160px;
+	height: 550px;
+	z-index: 2;
+	border: 3px solid #FFFFCC;
+	margin-right: auto;
+	margin-left: 1020px;
+	background-image: url(img/auth.jpg);
+	padding: 30px;
+	boder-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	box-shadow: 4px 4px 6px black;
+}
+#BarMenu a {
+	color: #999;
+	font: normal 1.9em serif;
+	line-height: 50px;
+	margin: 0 16px;
+	text-decoration: none;
+}
+#BarPlay a:hover{
+	color:#999;
+}
+#BarMenu a:hover{
+	color:#FFF;
+}
 #ancient{
-	font-family:"Times New Roman", Times, serif;
-	
-	height:35px;
+	font-family: "Courier New", Courier, monospace;
 	font-size:20px;
-	font-weight:bolder;
-	color:#83B87F;
+	font-weight:bold;
+	color:#f7df99;}
+#menu{
+	font-family: "Courier New", Courier, monospace;
+	font-weight:bold;
+	font-size:28px;
+	font-weight:bold;
+	color:#f7df99;}	
 	
-	}
-
 #BarLog input[name="userInpt"], input[name="passInpt"]{
 height:30px;
-background-color:#FFFFFF;
-border:1px solid #FFBD2F;
-padding-left:5px;
-boder-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	width:100%;
- margin-bottom:10px;
-}
-.inputbug{
-padding: 8px;
 background-color:#FFFFFF;
 border:1px solid #FFBD2F;
 padding-left:5px;
@@ -111,7 +173,7 @@ color:#000;
 	font-weight:bolder;
 	color:#333;
 }
-#BarReg input[id="nameInpt"], input[id="FnameInpt"], input[id="DbirthInpt"],input[id="AccNameInpt"],input[id="mailInpt"],input[id="pass1Inpt"],input[id="pass2Inpt"]{
+#BarReg input[id="nameInpt"],input[id="FnameInpt"],input[id="DbirthInpt"],input[id="AccNameInpt"],input[id="mailInpt"],input[id="pass1Inpt"],input[id="pass2Inpt"]{
 height:30px;
 background-color:#FFFFFF;
 border:1px solid #FFBD2F;
@@ -122,12 +184,80 @@ boder-radius: 5px;
 	width:100%;
  margin-bottom:10px;
 }
+
 #BarReg label{
 	font-size:18px;
 	font-family:"Times New Roman", Times, serif;
 	color:#333;
 }
+#BarPers p input[id="namePersInpt"]{
+	height:30px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+padding-left:5px;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	
+	
+}
+#BarPers p input[id="PowerInpt"], input[id="DextInpt"], input[id="ConstInpt"], input[id="intelInpt"], input[id="PRRInpt"]{
+	height:30px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+padding-left:5px;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:50px;
+	
+}
 
+#BarPers p label span[id="Power"]{
+margin-right:55px;
+}
+#BarPers p label span[id="PRR"]{
+margin-left:30px;
+}
+#BarPers p label span[id="Dext"]{
+margin-right:30px;
+}
+#BarPers p label span[id="Const"]{
+margin-right:5px;
+}
+#BarPers p label span[id="Intel"]{
+margin-right:12px;
+}
+#BarPers p label span[id="Race"],span[id="Sexe"]{
+margin-right:65px;
+}
+#BarPers p select{
+	height:30px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+padding-left:5px;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:100px;
+}
+#BarPers p button{
+	height:40px;
+width:150px;
+background-color:#336633;
+color:#FFFFFF;
+boder-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	margin-top:30px;
+}
+#BarPers p button:hover{
+	border:1px solid #FF0000;
+color:#000;
+}
+#BarPers p button[name="erase"]{
+	margin-right:150px;
+}
 #cond{
 	margin-left:10px;
 	font-size:16px;
@@ -149,7 +279,32 @@ boder-radius: 10px;
 border:1px solid #FF0000;
 color:#000;
 }
-.style2 {font-size: 9px}
-
-
-
+.style2 {font-size: 9}
+#img1{
+width:200px;
+height:400px;
+margin-left:200px;
+}
+#img2{
+width:100px;
+height:80px;
+margin-left:250px;
+}
+.persn #persn1 #nameP1{
+	background-color:#FFC;
+}
+.persn #persn1 #detailP1{
+	background-color:#d3ebce;
+}
+.persn #persn2 #nameP2{
+	background-color:#FFC;
+}
+.persn #persn2 #detailP2{
+	background-color:#d3ebce;
+}
+.persn #persn3 #nameP3{
+	background-color:#FFC;
+}
+.persn #persn3 #detailP3{
+	background-color:#d3ebce;
+}

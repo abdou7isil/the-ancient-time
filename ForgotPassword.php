@@ -8,37 +8,45 @@
 <link rel="stylesheet" type="text/css" href="Confirmation.css"> 
 </head>
 <body>
-<div id="DemonZone"><img src="img/demon.png" alt="" width="271" height="295" id="demon" /></div>
+<div id="DemonZone2"><img src="img/demon.png" alt="" width="271" height="295" id="demon" /></div>
 <div class="container">
-  <div class="gfx"></div>
-  <div class="top">
-    <div class="navigation"> <a href="#" id="selected">home</a> <a href="#">forum</a> <a href="#">property</a> <a href="#">player</a> <a href="#">history</a> </div>
-    <div class="pattern"><span></span></div>
-    <div class="header">
-	
-      <h1 align="right">  The Ancient Time </h1>
-      <p  align="center" class="style2"> the greatest war and treasure hunt </p>
-    </div>
-    <div class="pattern"><span></span></div>
-  </div>
   <div>
-  <p>       </p>
-  </div>
+    <p>       </p>
+</div>
   <div class="content">
-    <div class="divider">
-      <p>&nbsp;</p>
-    </div>
+    <div class="divider"></div>
     <p align="center" id="forgPass">
     Forgot Password ?</p>
    
     <p align="justify" id="indication">
         Enter your email address. Your password will be sent to the address used to create the account.</p>
+        
+    <form id="formForgPass" method="" action="">
+      <p>
+   <label for="textfield"><span id="mailAdress">Email Adress:</span></label>
+  
+ <input name="email" type="email" id="mailInpt" placeholder="Enter your Email"/>
+ </p>
+<p align="center">
+  <button type="submit" name="recover1" >Recover</button>
+ </p>
+  
+ <p>&nbsp;</p>
+<p id="indication" align="justify">
+  You can also enter your phone number.
+</p>
 
-        <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+ <p>
+ <label for="label"><span id="phoneNumber">Phone Number:</span></label>
+
+ <input name="firstName" type="text" id="phoneInpt" size="50" placeholder="Enter Your Phone Number" />
+ 
+<p align="center">
+  <button type="submit" name="recover2" >  Recover</button>
+</p>
+      
+      <p>&nbsp;</p>
+    </form>
     <p>&nbsp;</p>
   </div>
    <div class="footer">

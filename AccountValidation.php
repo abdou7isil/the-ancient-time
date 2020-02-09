@@ -1,3 +1,4 @@
+<?php include('server.php') ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
 <head>
@@ -14,7 +15,8 @@
 <div id="BarLog"><p id="ancient" align="center">The Ancient Time  </p>
  <p align="center"><a href="register.php" class="register">Create an account </a> </p>
   <p>
-  <form id="formLog" method="post" action="">
+  <form id="formLog" method="post" action="AccountValidation.php">
+  <?php include('errors.php'); ?>
     <p>
     <label><span id="user">User </span></label>
     
@@ -26,7 +28,7 @@
     <input name="passInpt" type="password"  placeholder="********"/>
     </p>
     <p align="center">
-    <a href="#" class="obPass">Forgot your password ?</a></p>
+    <a href="ForgotPassword.php" class="obPass">Forgot your password ?</a></p>
     <p>&nbsp;</p>
     <p align="center">
       <button type="submit" name="logBtn">Connect</button>
@@ -39,7 +41,7 @@
  
   <div class="gfx"></div>
 <div class="top">
-    <div class="navigation"> <a href="#" id="selected">home</a> <a href="#">forum</a> <a href="#">property</a> <a href="#">player</a> <a href="#">history</a> </div>
+    <div class="navigation"> <a href="home.php" id="selected">HOME</a>  <a href="#">PROPERTY</a> <a href="#">PLAYER</a> <a href="#">HISTORY</a> </div>
     <div class="pattern"><span></span></div>
     <div class="header">
 	
