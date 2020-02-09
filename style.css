@@ -127,7 +127,7 @@ width:100;
 	font-weight:bold;
 	color:#f7df99;}	
 	
-#BarLog input[name="userInpt"], input[name="passInpt"]{
+#BarLog input[name="userInpt"], input[name="passInpt"] {
 height:30px;
 background-color:#FFFFFF;
 border:1px solid #FFBD2F;
@@ -137,6 +137,15 @@ boder-radius: 5px;
 	-webkit-border-radius: 5px;
 	width:100%;
  margin-bottom:10px;
+}
+.inputbug{
+padding: 8px;
+background-color:#FFFFFF;
+border:1px solid #FFBD2F;
+boder-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	width:100%;
 }
 #BarLog label span{
 	font-size:14px;
