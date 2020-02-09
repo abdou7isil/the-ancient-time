@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `revenus` (
   `ID_Rev` int(4) NOT NULL AUTO_INCREMENT,
   `Type_Rev` varchar(15) NOT NULL,
   `Mont_Rev` float NOT NULL,
+  `quantité` int(4) NOT NULL,
   PRIMARY KEY (`ID_Rev`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -40,11 +41,12 @@ CREATE TABLE IF NOT EXISTS `revenus` (
 -- Déchargement des données de la table `revenus`
 --
 
-INSERT INTO `revenus` (`ID_Rev`, `Type_Rev`, `Mont_Rev`) VALUES
-(1, 'or_pack_100', 100),
-(2, 'or_pack_200', 180),
-(3, 'or_pack_300', 250);
+INSERT INTO `revenus` (`ID_Rev`, `Type_Rev`, `Mont_Rev`, `quantité`) VALUES
+(1, 'or_pack_100', 100,0),
+(2, 'or_pack_200', 180,0),
+(3, 'or_pack_300', 250,0);
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
