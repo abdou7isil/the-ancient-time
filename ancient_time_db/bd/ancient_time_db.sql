@@ -326,9 +326,12 @@ CREATE TABLE IF NOT EXISTS `guild` (
   `Nom_Guild` varchar(15) NOT NULL,
   `For_ce_Guild` int(2) NOT NULL,
   `ID_Mond` int(2) NOT NULL,
+  `Members` text NOT NULL,
+  `Admin` varchar(15) NOT NULL,
   PRIMARY KEY (`ID_Guild`),
   KEY `ID_Mond` (`ID_Mond`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -345,19 +348,14 @@ CREATE TABLE IF NOT EXISTS `inventaire` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `invitation`
---
 
-DROP TABLE IF EXISTS `invitation`;
-CREATE TABLE IF NOT EXISTS `invitation` (
-  `ID_J1` int(4) NOT NULL,
-  `ID_J2` int(4) NOT NULL,
-  `Reponse` varchar(10) NOT NULL,
-  `Date_Inv` date NOT NULL,
-  KEY `ID_J1` (`ID_J1`,`ID_J2`),
-  KEY `ID_J2` (`ID_J2`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `friend_requests`;
+CREATE TABLE IF NOT EXISTS `friend_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` int(11) NOT NULL,
+  `recipient` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -387,6 +385,7 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   `ID_Class` int(11) NOT NULL,
   `MainG` int(11) NOT NULL,
   `MainD` int(11) NOT NULL,
+  `friends` text DEFAULT NULL,
   PRIMARY KEY (`ID_J`),
   KEY `ID_Ad` (`ID_Ad`),
   KEY `ID_Liste` (`ID_Liste`),
@@ -394,19 +393,6 @@ CREATE TABLE IF NOT EXISTS `joueur` (
   KEY `ID_Class` (`ID_Class`),
   KEY `MainG` (`MainG`),
   KEY `MainD` (`MainD`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `liste_amis`
---
-
-DROP TABLE IF EXISTS `liste_amis`;
-CREATE TABLE IF NOT EXISTS `liste_amis` (
-  `ID_Liste` int(4) NOT NULL AUTO_INCREMENT,
-  `Nbr_Amis` int(4) NOT NULL,
-  PRIMARY KEY (`ID_Liste`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
