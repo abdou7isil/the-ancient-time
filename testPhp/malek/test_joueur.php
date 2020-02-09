@@ -16,6 +16,13 @@
     $joueur2->afficher();
     echo"<br>";
     $joueur2->attaquer($joueur);
+      echo"<br>";
+      $joueur-> getInventaire();
+      echo "<br>".$joueur->list_objet[0];
+      $joueur->setMainG("massue");
+        $joueur->setMainD("dague");
+
+
 
 
     ?>

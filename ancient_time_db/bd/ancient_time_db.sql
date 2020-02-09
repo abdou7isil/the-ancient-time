@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 08 fév. 2020 à 11:47
+-- Généré le :  Dim 09 fév. 2020 à 15:37
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -176,14 +176,14 @@ CREATE TABLE IF NOT EXISTS `comptable` (
   `Email` varchar(20) NOT NULL,
   `Mot_Passe` varchar(10) NOT NULL,
   `Date_Debut` date NOT NULL,
+  `Date_Fin` date NOT NULL,
   `Salair` float NOT NULL,
-  PRIMARY KEY (`ID_Comptable`)
+  `ID_Sad` varchar(15) NOT NULL,
+  PRIMARY KEY (`ID_Comptable`),
+  KEY `ID_Sad` (`ID_Sad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
--- insertion des valeurs comptable
-INSERT INTO `comptable` (`ID_Comptable`, `Nom_Comptable`, `Prenom_Comptable`, `Date_Nais_Com`, `Email`, `Mot_Passe`, `Date_Debut`, `Salair`) VALUES
-(1, 'hababou', 'mounir', '1996-01-22', 'no_email', '000', now(), 20000);
 
 --
 -- Structure de la table `developpeur`
@@ -329,9 +329,20 @@ CREATE TABLE IF NOT EXISTS `guild` (
 DROP TABLE IF EXISTS `inventaire`;
 CREATE TABLE IF NOT EXISTS `inventaire` (
   `ID_Inv` int(11) NOT NULL AUTO_INCREMENT,
-  `Date_Inv` date NOT NULL,
-  PRIMARY KEY (`ID_Inv`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Date_Inv` date DEFAULT NULL,
+  `ID_Joueur` int(11) NOT NULL,
+  `ID_Objet` int(11) NOT NULL,
+  PRIMARY KEY (`ID_Inv`),
+  KEY `ID_Joueur` (`ID_Joueur`),
+  KEY `ID_Objet` (`ID_Objet`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `inventaire`
+--
+
+INSERT INTO `inventaire` (`ID_Inv`, `Date_Inv`, `ID_Joueur`, `ID_Objet`) VALUES
+(1, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -375,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `joueur` (
 --
 
 INSERT INTO `joueur` (`ID_J`, `Nom_J`, `Prenom_J`, `Date_Nais_J`, `Nom_Compt`, `Email_J`, `Mot_Passe`, `Point`, `Point_Rest_Repart`, `Reputation`, `Etat_Disscut`, `Sold_Or`, `PA`, `PM`, `ID_Ad`, `ID_Liste`, `ID_Guild`, `ID_Class`, `MainG`, `MainD`) VALUES
-(1, 'abdou', 'malek', NULL, 'testcompte', NULL, 'aaaa', NULL, NULL, NULL, NULL, 800, NULL, NULL, NULL, NULL, NULL, 1, 3, 2);
+(1, 'abdou', 'malek', NULL, 'testcompte', NULL, 'aaaa', NULL, NULL, NULL, NULL, 800, NULL, NULL, NULL, NULL, NULL, 1, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -389,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `username` varchar(255) NOT NULL,
   `friends` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -615,15 +626,12 @@ CREATE TABLE IF NOT EXISTS `revenus` (
   `ID_Rev` int(4) NOT NULL AUTO_INCREMENT,
   `Type_Rev` varchar(15) NOT NULL,
   `Mont_Rev` float NOT NULL,
-  PRIMARY KEY (`ID_Rev`)
+  `ID_Comptable` int(2) NOT NULL,
+  PRIMARY KEY (`ID_Rev`),
+  KEY `ID_Comptable` (`ID_Comptable`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
--- insertion des revenus
-INSERT INTO `revenus` (`ID_Rev`, `Type_Rev`, `Mont_Rev`) VALUES
-(1, 'or_pack_100', 100),
-(2, 'or_pack_200', 200),
-(3, 'or_pack_300', 300);
 
 --
 -- Structure de la table `se_deplacer`
@@ -720,8 +728,8 @@ ALTER TABLE `bug`
 --
 -- Contraintes pour la table `comptable`
 --
---  ALTER TABLE `comptable`
---  ADD CONSTRAINT `comptable_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
+ALTER TABLE `comptable`
+  ADD CONSTRAINT `comptable_ibfk_1` FOREIGN KEY (`ID_Sad`) REFERENCES `super_admin` (`ID_Sad`);
 
 --
 -- Contraintes pour la table `developpeur`
@@ -766,6 +774,13 @@ ALTER TABLE `friend_requests`
 --
 ALTER TABLE `guild`
   ADD CONSTRAINT `guild_ibfk_1` FOREIGN KEY (`ID_Mond`) REFERENCES `monde` (`ID_Mond`);
+
+--
+-- Contraintes pour la table `inventaire`
+--
+ALTER TABLE `inventaire`
+  ADD CONSTRAINT `inventaire_ibfk_1` FOREIGN KEY (`ID_Joueur`) REFERENCES `joueur` (`ID_J`),
+  ADD CONSTRAINT `inventaire_ibfk_2` FOREIGN KEY (`ID_Objet`) REFERENCES `objet` (`ID_Obj`);
 
 --
 -- Contraintes pour la table `joueur`
@@ -834,8 +849,8 @@ ALTER TABLE `recuperer`
 --
 -- Contraintes pour la table `revenus`
 --
--- ALTER TABLE `revenus`
---  ADD CONSTRAINT `revenus_ibfk_1` FOREIGN KEY (`ID_Comptable`) REFERENCES `comptable` (`ID_Comptable`);
+ALTER TABLE `revenus`
+  ADD CONSTRAINT `revenus_ibfk_1` FOREIGN KEY (`ID_Comptable`) REFERENCES `comptable` (`ID_Comptable`);
 
 --
 -- Contraintes pour la table `se_deplacer`
