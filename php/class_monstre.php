@@ -4,7 +4,7 @@
 class Monstre extends DatabaseObject {
 
     static public $table_name='monstre';
-    static public $db_columns= ['ID_Monst' , 'Nom_Monst' , 'HP' , 'Level' , 'Attaque' , 'ID_Etag'];
+    static public $db_columns= ['ID_Monst' , 'x' , 'y' , 'Nom_Monst' , 'HP' , 'Level' , 'Attaque' , 'ID_Etag'];
 
     public function ajouter() {
       $this->validate();
@@ -38,6 +38,8 @@ class Monstre extends DatabaseObject {
   public $ID_Monst;
   public $Nom_Monst;
   public $HP;
+  public $x;
+  public $y;
   public $Level;
   public $Attaque;
   public $ID_Etag;
@@ -46,6 +48,8 @@ class Monstre extends DatabaseObject {
   {
     $this->ID_Monst=$args['ID_Monst'] ?? '';
     $this->Nom_Monst=$args['Nom_Monst'] ?? '';
+    $this->x=$args['x'] ?? '';
+    $this->y=$args['y'] ?? '';
     $this->HP=$args['HP'] ?? '';
     $this->Level=$args['Level'] ?? '';
     $this->Attaque=$args['Attaque'] ?? '';

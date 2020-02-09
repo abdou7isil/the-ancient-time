@@ -106,7 +106,7 @@
                                   echo h($diff->format('%y'));
                                    */?></td>
                                    <td><?php echo h($row['Duree']); ?></td>
-                                   <td class="text-center  text-light"><a href="etage.php?ID_Dun=<?php echo ($row['ID_Dun']);?>" name="button" class="btn btn-success" >Etage</a>
+                                   <td class="text-center  text-light"><a href="Etage.php?ID_Dun=<?php echo ($row['ID_Dun']);?>" name="button" class="btn btn-success" >Etage</a>
                                    <td class="text-center  text-light"><a href="suprimerDungeon.php?ID_Dun=<?php echo ($row['ID_Dun']);?>" name="button" class="btn btn-danger" >Suprimer</a>
                                 </tr>
                               <?php }}?>

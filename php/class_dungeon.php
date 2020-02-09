@@ -3,7 +3,7 @@
 
 class Dungeon extends DatabaseObject {
 
-    static public $table_name='dungion';
+    static public $table_name='dungeon';
     static public $db_columns= ['ID_Dun' , 'Nom_Dun' , 'Width_Dun' , 'Height_Dun' , 'difficult_Dun' , 'Duree' , 'ID_Mond'];
 
     public function ajouter() {
@@ -18,10 +18,10 @@ class Dungeon extends DatabaseObject {
       $sql .= "')";
       $result = self::$database->query($sql);
 
-      if(!$result) {
-        die("Query Failed");
-      }else {
+      if($result) {
         $this->ID_Dun = self::$database->insert_id;
+      }else {
+        die("Query Failed");
       }
       return $result;
     }

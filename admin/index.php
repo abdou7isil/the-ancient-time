@@ -29,7 +29,18 @@
     include'../html/admin/navbar.php'
       ?>
       <section>
+        <div class="container-fluid ">
+          <div class="row">
+            <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+              <div class="row pt-md-5 mt-md-3 mb-5">
+                <div class="col">
+                  test
 
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
 

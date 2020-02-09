@@ -198,7 +198,43 @@ class DatabaseObject {
     return $result;
   }
 
+  static public function find_all_etage_dungeon(){
+    $sql = "SELECT * FROM etage";
+    $sql .=" INNER JOIN dungeon ";
+    $sql .="ON dungeon.ID_Dun = etage.ID_Dun ";
+    $result = self::$database->query($sql);
+    if(!$result) {
+      exit("Database query failed.");
+    }
+    return $result;
+  }
+
+  static public function find_all_monstre_etage(){
+    $sql = "SELECT * FROM monstre";
+    $sql .=" INNER JOIN etage ";
+    $sql .="ON monstre.ID_Etag = etage.ID_Etag ";
+    $result = self::$database->query($sql);
+    if(!$result) {
+      exit("Database query failed.");
+    }
+    return $result;
+  }
+  static public function find_all_monstre_etage_dungeon_monde(){
+      $sql = "SELECT * FROM monstre";
+      $sql .=" INNER JOIN etage ";
+      $sql .="ON monstre.ID_Etag = etage.ID_Etag ";
+      $sql .="INNER JOIN dungeon ";
+      $sql .="ON dungeon.ID_Dun = etage.ID_Dun ";
+      $sql .="INNER JOIN monde ";
+      $sql .="ON monde.ID_Mond = dungeon.ID_Mond  ORDER BY ID_Monst";
+      $result = self::$database->query($sql);
+      if(!$result) {
+        exit("Database query failed.");
+      }
+      return $result;
+    }
 }
+
 
 
 ?>

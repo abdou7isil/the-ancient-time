@@ -4,7 +4,7 @@
 class Etage extends DatabaseObject {
 
     static public $table_name='etage';
-    static public $db_columns= ['ID_Etag' , 'Num_Etag' , 'Difficult' , 'ID_Dun'];
+    static public $db_columns= ['ID_Etag' , 'Num_Etag' , 'Width' , 'Height' , 'Difficult' , 'ID_Dun'];
 
     public function ajouter() {
       $this->validate();
@@ -36,14 +36,17 @@ class Etage extends DatabaseObject {
     }
 
   public $ID_Etag;
-  public $Num_Etage;
+  public $Num_Etag;
+  public $Width;
+  public $Height;
   public $Difficult;
   public $ID_Dun;
 
   function __construct($args=[])
   {
-    $this->ID_Etag=$args['ID_Etag'] ?? '';
     $this->Num_Etag=$args['Num_Etag'] ?? '';
+    $this->Width=$args['Width'] ?? '';
+    $this->Height=$args['Height'] ?? '';
     $this->Difficult=$args['Difficult'] ?? '';
     $this->ID_Dun=$args['ID_Dun'] ?? '';
   }

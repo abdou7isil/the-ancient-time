@@ -8,10 +8,8 @@
 <?php require('../php/init.php') ?>
 <?php //require_login();  ?>
 <?php
-  $ID_Etag = $_GET['ID_Etag'] ?? false;
-  echo $ID_Etag;
 
-  $result = Monstre::find_all_monstre_etage();
+  $result = Monstre::find_all_monstre_etage_dungeon_monde();
   ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -42,18 +40,18 @@
     include'../html/admin/navbar.php'
       ?>
       <section>
-
                           <div class="container-fluid ">
                             <div class="row">
                               <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
                                 <div class="row pt-md-5 mt-md-3 mb-5">
-
                                   <div class="col">
                                     <table class="table table-striped table-bordered text-center table-responsive-md">
                                       <thead>
                                         <tr>
                                           <th scope="col">#Id Monstre</th>
                                           <th scope="col">Nom du Monstre</th>
+                                          <th scope="col">Monde</th>
+                                          <th scope="col">Dungeon</th>
                                           <th scope="col">Num Etage</th>
                                           <th scope="col">x</th>
                                           <th scope="col">y</th>
@@ -67,12 +65,12 @@
                                         <?php
                                         while($row = $result->fetch_assoc())
                                      {
-                                        $cpt=0;
-                                          if (  ($ID_Etag==$row['ID_Etag'])) {
                                         ?>
                                         <tr>
                                           <th scope="row"><?php echo h($row['ID_Monst']); ?></th>
                                           <td><?php echo h($row['Nom_Monst']); ?></td>
+                                          <td><?php echo h($row['Nom_Mond']); ?></td>
+                                          <td><?php echo h($row['Nom_Dun']); ?></td>
                                           <td><?php echo h($row['Num_Etag']); ?></td>
                                           <td><?php echo h($row['x']); ?></td>
                                           <td><?php echo h($row['y']); ?></td>
@@ -86,22 +84,16 @@
                                            <td><?php echo h($row['Attaque']); ?></td>
                                            <td class="text-center  text-light"><a href="suprimerMonstre.php?ID_Monst=<?php echo ($row['ID_Monst']);?>" name="button" class="btn btn-danger" >Suprimer</a>
                                         </tr>
-                                      <?php }}?>
+                                      <?php }?>
                                       </tbody>
                                    </table>
                                  <div class="col-md-12">
-                                     <a  class="btn btn-info btn-lg col mb-3" href="ajouterMonstre.php?ID_Etag=<?php echo $ID_Etag;?>">Ajouter un Monstre</a>
-                                </div>
                                  </div>
-
+                                </div>
                               </div>
-
                             </div>
-
                           </div>
-
                         </div>
-
       </section>
 
 

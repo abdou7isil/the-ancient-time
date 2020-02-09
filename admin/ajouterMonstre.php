@@ -1,5 +1,5 @@
 <?php include "../php/database.php" ?>
-<?php include "../php/class_dungeon.php" ?>
+<?php include "../php/class_monstre.php" ?>
 <?php include "../php/function.php" ?>
 <?php include "../php/validation_fonctions.php" ?>
 <?php include "../php/errors_status.php" ?>
@@ -11,23 +11,24 @@
 <?php
 if(is_post_request()) {
 
-  $args = $_POST['dungeon'];
-  $dungeon = new Dungeon($args);
+  $args = $_POST['monstre'];
+  $monstre = new Monstre($args);
 
-  $result = $dungeon->ajouter();
+  $result = $monstre->ajouter();
   if ($result) {
     // code...
 
-  $ID_Mond = $args['ID_Mond'];
+  $ID_Etag = $args['ID_Etag'];
 
-  $_SESSION['message'] = 'le Dungeon a était crée.';
+  $_SESSION['message'] = 'le monstre a était crée.';
 //  redirect_to('mondeDetail.php?ID_Mond=' . $new_id);
-  redirect_to('dungeon.php?ID_Mond='. $ID_Mond);
+  redirect_to('Monstre.php?ID_Etag='. $ID_Etag);
 }else {
+  echo "string";
 }
 } else {
   // display the form
-  $dungeon = new Dungeon;
+  $monstre = new Monstre;
 }
 ?>
 
@@ -69,17 +70,17 @@ if(is_post_request()) {
                     <div class=" text-info mb-3">
                     </div>
 
-                    <form action="ajouterDungeon.php" method="post" style="border:2px solid #5D6D7E ;
-                       box-shadow: 0px 4px 6px 6px #5D6D7E ;
+                    <form action="ajouterMonstre.php" method="post" style="border:2px solid #5D6D7E ;
+                      box-shadow: 0px 4px 6px 6px #5D6D7E ;
                       border-radius: 5px;
                       align-self: center;" class="border border-secondary rounded  p-3">
                     <div class="text-secondary mb-2">
 
-                    <i class="far fa-plus-square fa-2x d-inline"></i><h3 class="d-inline m-2">Ajouter un Dungeon</h3>
+                    <i class="far fa-plus-square fa-2x d-inline"></i><h3 class="d-inline m-2">Ajouter un Monstre</h3>
                     </div>
-                    <?php include "../html/admin/forms/form_dungeon.php" ?>
+                    <?php include "../html/admin/forms/form_monstre.php" ?>
 
-                      <button type="submit" class="form-control btn btn-success">Ajouter le Dungeon</button>
+                      <button type="submit" class="form-control btn btn-success">Ajouter le Monstre</button>
                     </form>
                   </div>
               </div>

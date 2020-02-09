@@ -1,6 +1,6 @@
 
 <?php include "../php/database.php" ?>
-<?php include "../php/class_dungeon.php" ?>
+<?php include "../php/class_etage.php" ?>
 <?php include "../php/pagination.class.php" ?>
 <?php include "../php/function.php" ?>
 <?php include "../php/validation_fonctions.php" ?>
@@ -9,8 +9,8 @@
 <?php require('../php/init.php') ?>
 <?php //require_login();  ?>
 <?php
-  $ID_Mond = $_GET['ID_Mond'] ?? false;
-  echo $ID_Mond;
+  $ID_Dun = $_GET['ID_Dun'] ?? false;
+  echo $ID_Dun;
 
   // $current_page = $_GET['page'] ?? 1;
   // $per_page = 5;
@@ -26,7 +26,7 @@
   // $sql .= "LIMIT {$per_page} ";
   // $sql .= "OFFSET {$pagination->offset()}";
   // $dossier = Dungeon::query($sql);
-  $result = Dungeon::find_all_dungeon_monde();
+  $result = Etage::find_all_etage_dungeon();
 
 ?>
 
@@ -74,14 +74,14 @@
                             <table class="table table-striped table-bordered text-center table-responsive-md">
                               <thead>
                                 <tr>
-                                  <th scope="col">#Id Dungeon</th>
+                                  <th scope="col">#Id Etage</th>
                                   <th scope="col">Nom du Dungeon</th>
-                                  <th scope="col">Monde</th>
+                                  <th scope="col">Num Etage</th>
                                   <th scope="col">Width</th>
                                   <th scope="col">Height</th>
                                   <th scope="col">Difficulte</th>
-                                  <th scope="col">Duree</th>
-                                  <th scope="col">Etage</th>
+                                  <th scope="col">Monstres</th>
+                                  <th scope="col">Ajouter Monstre</th>
                                   <th scope="col" class="text-center">Suprimer</th>
 
                                 </tr>
@@ -91,29 +91,29 @@
                                 while($row = $result->fetch_assoc())
                              {
                                 $cpt=0;
-                                  if (  ($ID_Mond==$row['ID_Mond'])) {
+                                  if (  ($ID_Dun==$row['ID_Dun'])) {
                                 ?>
                                 <tr>
-                                  <th scope="row"><?php echo h($row['ID_Dun']); ?></th>
+                                  <th scope="row"><?php echo h($row['ID_Etag']); ?></th>
                                   <td><?php echo h($row['Nom_Dun']); ?></td>
-                                  <td><?php echo h($row['Nom_Mond']); ?></td>
-                                  <td><?php echo h($row['Width_Dun']); ?></td>
-                                  <td><?php echo h($row['Height_Dun']); ?></td>
-                                  <td><?php echo h($row['difficult_Dun']);
+                                  <td><?php echo h($row['Num_Etag']); ?></td>
+                                  <td><?php echo h($row['Width']); ?></td>
+                                  <td><?php echo h($row['Height']); ?></td>
+                                  <td><?php echo h($row['Difficult']);
                                   /*$dateOfBirth = $row['date_de_naissance'];
                                   $today = date("Y-m-d");
                                   $diff = date_diff(date_create($dateOfBirth), date_create($today));
                                   echo h($diff->format('%y'));
                                    */?></td>
-                                   <td><?php echo h($row['Duree']); ?></td>
-                                   <td class="text-center  text-light"><a href="etage.php?ID_Dun=<?php echo ($row['ID_Dun']);?>" name="button" class="btn btn-success" >Etage</a>
-                                   <td class="text-center  text-light"><a href="suprimerDungeon.php?ID_Dun=<?php echo ($row['ID_Dun']);?>" name="button" class="btn btn-danger" >Suprimer</a>
+                                   <td class="text-center  text-light"><a href="Monstre.php?ID_Etag=<?php echo ($row['ID_Etag']);?>" name="button" class="btn btn-warning" >Monstres</a>
+                                   <td class="text-center  text-light"><a href="ajouterMonstre.php?ID_Etag=<?php echo ($row['ID_Etag']);?>" name="button" class="btn btn-success" >Ajouter Monstre</a>
+                                   <td class="text-center  text-light"><a href="suprimerEtage.php?ID_Etag=<?php echo ($row['ID_Etag']);?>" name="button" class="btn btn-danger" >Suprimer</a>
                                 </tr>
                               <?php }}?>
                               </tbody>
                            </table>
                          <div class="col-md-12">
-                             <a  class="btn btn-info btn-lg col mb-3" href="ajouterDungeon.php?ID_Mond=<?php echo $ID_Mond;?>">Crée un Dungeon</a>
+                             <a  class="btn btn-info btn-lg col mb-3" href="ajouterEtage.php?ID_Dun=<?php echo $ID_Dun;?>">Ajouter un Etage</a>
                         </div>
                          </div>
 

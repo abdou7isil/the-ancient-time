@@ -43,7 +43,7 @@
             <li class="nav-item"><a href="mondes.php" class="nav-link p-3 mb-2 sidebar-link text-info">
               <i class="fas fa-globe-europe text-info fa-lg mr-3"></i>Mondes</a></li>
 
-            <li class="nav-item"><a href="monstre.php" class="nav-link p-3 mb-2 sidebar-link text-danger">
+            <li class="nav-item"><a href="monstres.php" class="nav-link p-3 mb-2 sidebar-link text-danger">
               <i class="fas fa-spider text-danger fa-lg mr-3"></i>Monstres</a></li>
 
             <li class="nav-item"><a href="joueurs.php" class="nav-link text-warning p-3 mb-2 sidebar-link">

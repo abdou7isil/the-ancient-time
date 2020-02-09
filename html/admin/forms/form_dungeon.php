@@ -28,7 +28,7 @@
   <input type="time" name="dungeon[Duree]"   class="form-control"  placeholder="....">
 </div>
 <div class="form-group col-md-6">
-  <input type="text" name="dungeon[ID_Mond]" hidden  class="form-control" value="<?php $ID_Mond ?>"  placeholder="....">
+  <input type="text" name="dungeon[ID_Mond]" class="form-control" hidden value="<?php echo $_GET['ID_Mond'] ?>"  placeholder="....">  
 </div>
 </div>
 
