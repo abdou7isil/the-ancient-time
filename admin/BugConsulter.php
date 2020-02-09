@@ -53,7 +53,7 @@ var_dump($bug);
                       align-self: center;" class="border border-secondary rounded  p-3">
                       <div class="text-secondary mb-2">
 
-                      <i class="far fa-plus-square fa-2x d-inline"></i><h3 class="d-inline m-2">Ajouter un Monde</h3>
+                      <i class="far fa-plus-square fa-2x d-inline"></i><h3 class="d-inline m-2">Bug</h3>
                     </div>
                    <div class="font-weight-bold">
 <div class="form-row">
