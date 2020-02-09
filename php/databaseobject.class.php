@@ -2,7 +2,7 @@
 
 class DatabaseObject {
 
-  static protected $database='ancient_time_db';
+  static protected $database='gl';
   static protected $table_name = "";
   static protected $db_columns = [];
   public $errors = [];
