@@ -280,9 +280,14 @@ class joueur
              $this->resistance=$RS;
           }
           public function addItem($item)
-          {$this->list_objet[]=$item;}
+          {
+            $this->list_objet[]=$item;
+            $id=getItemId($item);
+            $query="insert into inventaire(id_objet,id_joueur) values(".$id.",".joueur::getID().")";
+            updateQuery($query);
+          }
 
-          public function attaquer($p2)
+          public function attaquer($p2) // $p2 c'est la cible soit un monstre soit un autre joueur
           {
                   $degat= $this->Force * ($p2->resistance /200);
                   $newPv=(int)$p2->pv-$degat;
