@@ -249,8 +249,19 @@ class joueur
     {return $this->resistance;}
 
     public function setResistance($RS)
-    {$this->resistance=$RS;}
+    {
+       $this->resistance=$RS;
+    }
 
+    public function attaquer($p2)
+    {
+      $degat= $this->Force * ($p2->resistance /200);
+      $newPv=(int)$p2->pv-$degat;
+      $p2->setPv($newPv);
+      $p2->setPv((int)$p2->pv);
+      $p2->afficher();
+
+    }
 
 }
    ?>
