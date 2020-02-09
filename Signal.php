@@ -6,11 +6,22 @@ if(isset($_POST["envoyer"])){
   if(isset($_POST["description"]) && !empty($_POST["description"])){
      $database->query("INSERT INTO `rapport`(`id_joueur`, `description`, `date_send`) VALUES (1,'".$_POST["description"]."',now())");
      $id_rapport = $database->insertid();
-     $database->query("INSERT INTO `bug`(`id_rapport`, `id_probleme`) VALUES (".$id_rapport.", ".$_POST["id_probleme"].")");
+     $database->query("INSERT INTO `signal_`(`id_joueur_signal`, `id_rapport`, `id_sprobleme`) VALUES (".$_POST["id_joueur_signal"].",".$id_rapport." , ".$_POST["id_probleme"].")");
      if(isset($_FILES["capture"])&&!empty($_FILES["capture"])){
       $target_file = "img/Rapport/".$id_rapport.".".strtolower(pathinfo($_FILES["capture"]["name"],PATHINFO_EXTENSION));
       move_uploaded_file($_FILES["capture"]["tmp_name"], $target_file);
     } 
+    header("location: index.php");
+  }
+}
+if(!(isset($_GET["j"])&&!empty($_GET["j"]))){
+   header("location: index.php");
+}else{
+  $result_joueur=$database->query("select username from joueur where id_joueur=".$_GET["j"]);
+  if(mysqli_num_rows($result_joueur)==1){
+    $joueur=mysqli_fetch_assoc($result_joueur);
+  } else{
+    header("location: index.php");
   }
 }
 ?>
@@ -66,8 +77,9 @@ if(isset($_POST["envoyer"])){
     <p align="center">
       <button type="submit" name="logBtn">Connect</button>
  </p>
+ </form>
     </p>
-  </form>
+  
 </div>
 
 <div class="container">
@@ -88,17 +100,21 @@ if(isset($_POST["envoyer"])){
   </div>
   <div class="content">
   <p align="center" >&nbsp;</p>
-   <p align="center" id="reg">Rapport Bug    </p>
+   <p align="center" id="reg">Signaler un compte     </p>
    <div id="BarReg">
-      <form id="formReg" method="post" action="Bug.php" enctype="multipart/form-data">
+      <form id="formReg" method="post" action="Signal.php" enctype="multipart/form-data">
+      <div style="display: flex;justify-content: flex-start;">
+        <img src="img/you.png">
+          <label for="textfield"><span id="name"><?php echo $joueur["username"];?></span></label>
+      </div>
       <p>
-        <label for="textfield"><span id="name">Probleme rencontrés (Sélectionnez en fonction) :</span></label>
+        <label for="textfield"><span id="name">Probleme (Sélectionnez en fonction) :</span></label>
         <select name="id_probleme" class="inputbug" >
           <?php
              $database =new database();
-             $result=$database->query("select * from probleme");
+             $result=$database->query("select * from sprobleme");
              while($row=mysqli_fetch_assoc($result)){
-               echo "<option value=\"".$row["id_probleme"]."\">".$row["nom"]."</option>";
+               echo "<option value=\"".$row["id_sprobleme"]."\">".$row["nom"]."</option>";
              }
           ?>
         </select>
@@ -112,7 +128,7 @@ if(isset($_POST["envoyer"])){
         <input type="file" name="capture" class="inputbug" />
       </p>
       <p class="style20">&nbsp;</p>
-   
+      <input type="hidden" name="id_joueur_signal" value="<?php echo $_GET['j'];?>">
       <p align="center">
         <button type="submit" name="envoyer" >Envoyer</button>
       </p>
