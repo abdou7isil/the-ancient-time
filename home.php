@@ -47,7 +47,7 @@
  
   <div class="gfx"></div>
 <div class="top">
-    <div class="navigation"> <a href="home.php" id="selected">HOME</a>  <a href="#">PROPERTY</a> <a href="#">PLAYER</a> <a href="#">HISTORY</a> </div>
+    <div class="navigation"> <a href="home.php" id="selected">HOME</a>  <a href="#">PROPERTY</a> <a href="#">PLAYER</a> <a href="#">HISTORY</a><a href="magasin.php">magasin</a> </div>
     <div class="pattern"><span></span></div>
     <div class="header">
 	
