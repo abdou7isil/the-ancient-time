@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `objet` (
 --
 
 INSERT INTO `objet` (`ID_Obj`, `Nom_Obj`, `prix_objet`, `Etat_Obj`, `for_ce`, `objetPa`, `objetPm`, `objetPv`, `objetResistance`) VALUES
-(1, 'épée', 10, 'neuf', 70, 0, 0, 80, 15),
+(1, 'epee', 10, 'neuf', 70, 0, 0, 80, 15),
 (2, 'arc', 8, 'neuf', 18, 2, 2, 20, 3),
 (3, 'dague', 6, 'neuf', 20, 1, 2, 40, 5),
 (4, 'baton', 7, 'neuf', 40, 1, 0, 60, 7),
